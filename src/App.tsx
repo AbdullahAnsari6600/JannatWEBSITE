@@ -10,7 +10,6 @@ import Services from "./pages/Services";
 import Packages from "./pages/Packages";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
-import HajjPackages from "./pages/HajjPackages";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

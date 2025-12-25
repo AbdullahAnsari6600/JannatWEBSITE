@@ -12,7 +12,6 @@
 @import '@fontsource/inter/600.css';
 @import '@fontsource/inter/700.css';
 
-/* JANNAT TRAVELS DESIGN SYSTEM - Premium Spiritual Travel Aesthetic */
 
 @layer base {
   :root {
@@ -191,9 +190,7 @@
   .hero-overlay {
     background: var(--gradient-hero);
   }
-  .hero-overlay {
-    z-index: 10;
-  }
+  
   /* Primary Gradient */
   .gradient-primary {
     background: var(--gradient-primary);
