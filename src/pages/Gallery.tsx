@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
 
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { SectionHeading } from '@/components/SectionHeading';
+import { X, ChevronDown } from 'lucide-react';
+
+
 
 import heroImage from '@/assets/hero-makkah.jpg';
 import madinahImage from '@/assets/madinah-hero.jpg';
@@ -15,6 +17,54 @@ import alUla from '@/assets/al-ula.jpg';
 import europeTour from '@/assets/europe-tour.jpg';
 import riyadh from '@/assets/riyadh.jpg';
 import uhud from '@/assets/uhud.jpg';
+import abha from '@/assets/abha.jpg'
+import taif from '@/assets/taif.jpg'
+
+
+const FAQItem = ({ faq, index }: { faq: any; index: number }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      viewport={{ once: true }}
+      className="rounded-2xl bg-background shadow-sm border border-border overflow-hidden"
+    >
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+      >
+        <h3 className="font-semibold text-lg text-foreground">
+          {faq.question}
+        </h3>
+
+        <motion.span
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ChevronDown className="w-5 h-5 text-muted-foreground" />
+        </motion.span>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="px-6 pb-5 text-muted-foreground leading-relaxed"
+          >
+            {faq.answer}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -34,10 +84,56 @@ const Gallery = () => {
     { src: luxuryHotel, category: 'makkah', title: 'Premium Accommodation' },
     { src: happyFamily, category: 'ziyarat', title: 'Happy Pilgrims' },
     { src: alUla, category: 'tours', title: 'Al Ula Heritage' },
-    { src: europeTour, category: 'tours', title: 'International Tours' },
+    { src: europeTour, category: 'tours', title: 'Tours' },
     { src: riyadh, category: 'tours', title: 'Riyadh Cityscape' },
     { src: uhud, category: 'madinah', title: 'Mount Uhud' },
+    { src: abha, category: 'Abha', title: 'Abha Family trips' },
+    { src: taif, category: 'Taif', title: 'Taif- City of Mountains' },
   ];
+  const faqs = [
+    {
+      question: 'What is included in your Umrah packages?',
+      answer:
+        'Our Umrah packages typically include visa processing, round-trip transportation, hotel accommodation near Haram, guided Ziyarat tours, and dedicated assistance throughout your spiritual journey.',
+    },
+    {
+      question: 'Do you provide Hajj packages for all categories?',
+      answer:
+        'Yes. We offer economical, standard, and luxury Hajj packages, covering accommodation, transportation, Mina–Arafat services, meals, and experienced group guides in accordance with Saudi regulations.',
+    },
+    {
+      question: 'How early should I book Umrah or Hajj?',
+      answer:
+        'For Umrah, booking 4–6 weeks in advance is recommended. Hajj packages should be booked several months earlier due to limited quotas and high demand.',
+    },
+    {
+      question: 'Is Saudi Umrah visa included in the package?',
+      answer:
+        'Yes. We handle complete Umrah visa processing, documentation, and approvals as part of our Umrah packages.',
+    },
+    {
+      question: 'Do you arrange hotels near Haram in Makkah and Madinah?',
+      answer:
+        'Absolutely. We provide carefully selected hotels at walking distance or with shuttle services, depending on the chosen package.',
+    },
+    {
+      question: 'Are Ziyarat tours included?',
+      answer:
+        'Yes. Our packages include guided Ziyarat tours in Makkah and Madinah, covering important Islamic historical sites.',
+    },
+    {
+      question: 'Do you offer family and group packages?',
+      answer:
+        'Yes. We specialize in family, group, and elderly-friendly packages with customized arrangements.',
+    },
+    {
+      question: 'Is local Saudi sightseeing included?',
+      answer:
+        'We offer optional tours to destinations like Taif, Abha, AlUla, and Riyadh as add-ons to Umrah or separate tour packages.',
+    },
+  ];
+  
+
 
   const filteredImages = activeFilter === 'all' 
     ? galleryImages 
@@ -48,31 +144,34 @@ const Gallery = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[40vh] min-h-[350px] overflow-hidden">
-        <img 
-          src={heroImage} 
-          alt="Gallery" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 hero-overlay" />
+      <section className="relative z-0 h-[60vh] min-h-[500px] overflow-hidden">
+  {/* Background Image */}
+  <img
+    src={heroImage}
+    alt="Gallery"
+    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+  />
+
+  {/* Blue Gradient Overlay */}
+  <div className="absolute inset-0 hero-overlay pointer-events-none" />
+
+  {/* Content */}
+  <div className="relative z-10 h-full flex items-center">
+    <div className="container-wide">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         
-        <div className="relative z-10 h-full flex items-center">
-          <div className="container-wide">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold text-sm font-medium mb-6">
-                Our Gallery
-              </span>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground">
-                Memorable Moments
-              </h1>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl">
+          Memorable Moments & FAQ's
+        </h1>
+      </motion.div>
+    </div>
+  </div>
+</section>
+
 
       {/* Gallery Section */}
       <section className="section-padding">
@@ -137,6 +236,24 @@ const Gallery = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+<section className="section-padding bg-muted/30">
+  <div className="container-wide max-w-4xl">
+    <SectionHeading
+      badge="FAQs"
+      title="Frequently Asked Questions"
+      subtitle="Everything you need to know about Umrah, Hajj & Saudi tours"
+    />
+
+    <div className="mt-10 space-y-4">
+      {faqs.map((faq, index) => (
+        <FAQItem key={index} faq={faq} index={index} />
+      ))}
+    </div>
+  </div>
+</section>
+
+
       {/* Lightbox */}
       <AnimatePresence>
         {selectedImage && (
@@ -173,3 +290,4 @@ const Gallery = () => {
 };
 
 export default Gallery;
+

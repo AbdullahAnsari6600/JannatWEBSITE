@@ -73,9 +73,12 @@ export default {
         "dark-grey": "hsl(var(--dark-grey))",
       },
       fontFamily: {
-        display: ["Playfair Display", "serif"],
-        body: ["Inter", "sans-serif"],
+        display: ["Poppins", "sans-serif"], // headings
+        body: ["Inter", "sans-serif"],      // paragraphs, buttons, menus
       },
+      
+      
+          
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

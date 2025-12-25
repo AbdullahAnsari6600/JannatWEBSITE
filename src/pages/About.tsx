@@ -12,7 +12,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
 
 import madinahImage from '@/assets/madinah-hero.jpg';
-import happyFamily from '@/assets/happy-family.jpg';
+import happyFamily from '@/assets/about.jpg';
 
 const About = () => {
   const values = [
@@ -23,11 +23,11 @@ const About = () => {
   ];
 
   const milestones = [
-    { year: '2009', title: 'Foundation', description: 'Jannat Travels established in Riyadh, Saudi Arabia' },
-    { year: '2012', title: 'Expansion', description: 'Extended services to international pilgrims' },
-    { year: '2016', title: 'Growth', description: 'Reached 25,000 pilgrims served milestone' },
-    { year: '2020', title: 'Digital', description: 'Launched online booking and virtual consultation' },
-    { year: '2024', title: 'Today', description: 'Serving 50,000+ pilgrims with premium experiences' },
+    { year: 'January', title: 'Foundation', description: 'Jannat Travels & Tours established in Riyadh, Saudi Arabia' },
+    { year: 'March', title: 'Expansion', description: 'Extended services to local pilgrims' },
+    { year: 'May', title: 'Growth', description: 'Reached 2,000 pilgrims served milestone' },
+    { year: 'September', title: 'Digital', description: 'Launched online booking and virtual consultation' },
+    { year: 'December - 2025', title: 'Today', description: 'Serving 50,000+ pilgrims with premium experiences' },
   ];
 
   return (
@@ -35,32 +35,38 @@ const About = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
-        <img 
-          src={madinahImage} 
-          alt="About Jannat Travels" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 hero-overlay" />
+      {/* Hero Section */}
+<section className="relative z-0 h-[60vh] min-h-[500px] overflow-hidden">
+  {/* Background Image */}
+  <img
+    src={madinahImage}
+    alt="About Jannat Travels"
+    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+  />
+
+  {/* Blue Gradient Overlay (same as Contact) */}
+  <div className="absolute inset-0 hero-overlay pointer-events-none" />
+
+  {/* Content */}
+  <div className="relative z-10 h-full flex items-center">
+    <div className="container-wide">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-2xl"
+      >
         
-        <div className="relative z-10 h-full flex items-center">
-          <div className="container-wide">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-2xl"
-            >
-              <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold text-sm font-medium mb-6">
-                About Us
-              </span>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight">
-                Your Spiritual Journey, Our Sacred Duty
-              </h1>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl leading-tight text-center">
+  More About Us
+</h1>
+
+      </motion.div>
+    </div>
+  </div>
+</section>
+
 
       {/* Story Section */}
       <section className="section-padding">
@@ -104,12 +110,13 @@ const About = () => {
               className="relative"
             >
               <img 
-                src={happyFamily} 
-                alt="Happy pilgrims" 
-                className="rounded-3xl shadow-glass-lg"
-              />
+  src={happyFamily} 
+  alt="Happy pilgrims" 
+  className="rounded-3xl shadow-glass-lg w-full lg:w-[90%] mx-auto"
+/>
+
               <div className="absolute -bottom-6 -left-6 bg-card rounded-2xl shadow-glass-lg p-6">
-                <div className="text-4xl font-bold text-primary">15+</div>
+                <div className="text-4xl font-bold text-primary">5+</div>
                 <div className="text-muted-foreground">Years of Service</div>
               </div>
             </motion.div>
@@ -199,7 +206,7 @@ const About = () => {
           <SectionHeading
             badge="Our Journey"
             title="Milestones of Growth"
-            subtitle="Key moments in our story of service and excellence"
+            subtitle="Key moments in our story of service and excellence - 2025"
             light
           />
 
@@ -240,9 +247,9 @@ const About = () => {
       <section className="section-padding">
         <div className="container-wide">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <AnimatedCounter end={50000} suffix="+" label="Pilgrims Served" icon={<Users className="w-8 h-8" />} />
-            <AnimatedCounter end={2500} suffix="+" label="Successful Tours" icon={<MapPin className="w-8 h-8" />} />
-            <AnimatedCounter end={150} suffix="+" label="Expert Team" icon={<Award className="w-8 h-8" />} />
+            <AnimatedCounter end={30000} suffix="+" label="Pilgrims Served" icon={<Users className="w-8 h-8" />} />
+            <AnimatedCounter end={1500} suffix="+" label="Successful Tours" icon={<MapPin className="w-8 h-8" />} />
+            <AnimatedCounter end={50} suffix="+" label="Expert Team" icon={<Award className="w-8 h-8" />} />
             <AnimatedCounter end={99} suffix="%" label="Satisfaction Rate" icon={<Star className="w-8 h-8" />} />
           </div>
         </div>

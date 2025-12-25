@@ -41,11 +41,11 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: MapPin, title: 'Our Office', value: 'King Fahd Road, Al Olaya District, Riyadh, Saudi Arabia' },
-    { icon: Phone, title: 'Phone', value: '+966 12 345 6789', link: 'tel:+966123456789' },
-    { icon: Mail, title: 'Email', value: 'info@jannattravels.com', link: 'mailto:info@jannattravels.com' },
-    { icon: Clock, title: 'Working Hours', value: 'Sun - Thu: 9:00 AM - 6:00 PM' },
+    { icon: Phone, title: 'Phone', value: '+966 54 681 2673 ', link: 'tel:+966546812673' },
+    { icon: Mail, title: 'Email', value: 'info@jannattravelsandtours.com', link: 'mailto:info@jannattravelsandtours.com' },
+    { icon: Clock, title: 'Working Hours', value: 'Sat - Thu: 9:00 AM - 6:00 PM' },
   ];
+  
 
   const packages = [
     'Hajj Package',
@@ -62,31 +62,65 @@ const Contact = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[40vh] min-h-[350px] overflow-hidden">
-        <img 
-          src={madinahImage} 
-          alt="Contact Us" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 hero-overlay" />
-        
-        <div className="relative z-10 h-full flex items-center">
-          <div className="container-wide">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold text-sm font-medium mb-6">
-                Get in Touch
-              </span>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground">
-                Contact Us
-              </h1>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* <section className="relative h-[40vh] min-h-[350px] overflow-hidden">
+  <img 
+    src={madinahImage} 
+    alt="Contact Us" 
+    className="w-full h-full object-cover" 
+  />
+  
+  <div className="absolute inset-0 hero-overlay" />
+
+  <div className="relative z-50 h-full flex items-center justify-center text-center px-4 md:px-8">
+    <motion.div
+      initial={{ opacity: 1, y: 0 }}       // force visible
+      animate={{ opacity: 1, y: 0 }}       // force visible
+      transition={{ duration: 0 }}          // no delay
+      style={{ opacity: 1 }}               // inline style ensures visibility
+    >
+      <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold text-sm font-medium mb-6 drop-shadow-lg">
+        Get in Touch
+      </span>
+      <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl">
+        Contact Us
+      </h1>
+      <p className="text-white/90 mt-4 text-lg md:text-xl drop-shadow-lg max-w-2xl mx-auto">
+        Reach out for your Hajj, Umrah, Ziyarat, or other travel inquiries. We’re here to guide you every step of the way.
+      </p>
+    </motion.div>
+  </div>
+</section> */}
+
+<section className="relative z-0 h-[60vh] min-h-[500px] overflow-hidden">
+  <img
+    src={madinahImage}
+    alt="Contact Us"
+    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+  />
+
+  {/* Blue Gradient Overlay */}
+  <div className="absolute inset-0 hero-overlay pointer-events-none" />
+
+  {/* Content */}
+  <div className="relative z-10 flex h-full items-center justify-center text-center px-4 md:px-8">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl">
+        Contact Us
+      </h1>
+      <p className="text-white/90 mt-4 text-lg md:text-xl drop-shadow-lg max-w-2xl mx-auto">
+        Reach out for your Hajj, Umrah, Ziyarat, or other travel inquiries.
+      </p>
+    </motion.div>
+  </div>
+</section>
+
+
+
+
 
       {/* Contact Section */}
       <section className="section-padding">
@@ -105,34 +139,65 @@ const Contact = () => {
               </div>
 
               <div className="space-y-6">
-                {contactInfo.map((info) => (
-                  <motion.div
-                    key={info.title}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="flex gap-4"
-                  >
-                    <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-6 h-6 text-primary-foreground" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground">{info.title}</h3>
-                      {info.link ? (
-                        <a href={info.link} className="text-muted-foreground hover:text-secondary transition-colors">
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-muted-foreground">{info.value}</p>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+              {contactInfo.map((info) => (
+  <div key={info.title}>
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      className="flex gap-4"
+    >
+      {/* Icon */}
+      <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0">
+        <info.icon className="w-6 h-6 text-primary-foreground" />
+      </div>
+
+      {/* Text */}
+      <div>
+        <h3 className="font-semibold text-foreground">{info.title}</h3>
+
+        {info.link ? (
+          <a
+            href={info.link}
+            className="text-muted-foreground hover:text-secondary transition-colors"
+          >
+            {info.value}
+          </a>
+        ) : (
+          <p className="text-muted-foreground">{info.value}</p>
+        )}
+      </div>
+    </motion.div>
+
+    {/* ✅ MAP OUTSIDE FLEX — FULL WIDTH */}
+    {info.title === 'Working Hours' && (
+      <div className="mt-4 space-y-2">
+        {/* Address */}
+        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+          <MapPin className="w-3 h-3" />
+          King Fahd Road, Al Olaya, Riyadh
+        </div>
+
+        {/* Map */}
+        <div className="w-full h-44 rounded-xl overflow-hidden border border-border">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3626.5471592765616!2d46.72802347536378!3d24.639287878074384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDM4JzIxLjQiTiA0NsKwNDMnNTAuMiJF!5e0!3m2!1sen!2sin!4v1766674901331!5m2!1sen!2sin"
+            className="w-full h-full"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </div>
+    )}
+  </div>
+))}
+
+</div>
+
 
               {/* WhatsApp CTA */}
               <motion.a
-                href="https://wa.me/+966123456789"
+                href="https://wa.me/+966546812673 "
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
@@ -270,19 +335,6 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="h-96 bg-muted">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.674825988166!2d46.67522337600766!3d24.71117694888854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sKing%20Fahd%20Rd%2C%20Riyadh%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1703500000000!5m2!1sen!2sus"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Jannat Travels Location"
-        />
-      </section>
 
       <Footer />
       <WhatsAppButton />
