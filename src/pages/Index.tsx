@@ -18,7 +18,7 @@ import { TestimonialCard } from '@/components/TestimonialCard';
 import heroImage from '@/assets/hero-makkah.jpg';
 import madinahImage from '@/assets/madinah-hero.jpg';
 import luxuryHotel from '@/assets/luxury-hotel.jpg';
-import happyFamily from '@/assets/happy-family.jpg';
+import happyFamily from '@/assets/admin.png';
 import alUla from '@/assets/al-ula.jpg';
 import europeTour from '@/assets/europe-tour.jpg';
 import riyadh from '@/assets/riyadh.jpg';
@@ -35,7 +35,7 @@ const Index = () => {
     { image: uhud, title: 'Complete Ziyarat Tour', location: 'Holy Sites', duration: '7 Days', rating: 4.9, price: 'SAR 0,000', type: 'ziyarat' as const },
     { image: riyadh, title: 'Discover Saudi Arabia', location: 'Multiple Cities', duration: '10 Days', rating: 4.7, price: 'SAR 0,000', type: 'local' as const },
     { image: alUla, title: 'Al Ula Heritage Experience', location: 'Al Ula', duration: '5 Days', rating: 4.8, price: 'SAR 0,000', type: 'local' as const },
-    { image: europeTour, title: 'European Dream Vacation', location: 'Europe', duration: '12 Days', rating: 4.6, price: 'SAR 00,000', type: 'international' as const },
+    { image: europeTour, title: 'Summer Dream Vacation', location: 'Abha', duration: '12 Days', rating: 4.6, price: 'SAR 0,000', type: 'international' as const },
   ];
 
   const trustHighlights = [
@@ -334,41 +334,42 @@ const Index = () => {
 
       {/* Achievements */}
       <section className="section-padding">
-        <div className="container-wide">
-          <SectionHeading
-            badge="Our Achievements"
-            title="Trusted by Thousands"
-            subtitle="Numbers that speak for our dedication and commitment to excellence"
-          />
+  <div className="container-wide">
+    <SectionHeading
+      badge="Our Achievements"
+      title="Trusted by Thousands"
+      subtitle="Numbers that speak for our dedication and commitment to excellence"
+    />
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <AnimatedCounter
-              end={30000}
-              suffix="+"
-              label="Happy Pilgrims"
-              icon={<Users className="w-8 h-8" />}
-            />
-            <AnimatedCounter
-              end={1500}
-              suffix="+"
-              label="Tours Completed"
-              icon={<MapPin className="w-8 h-8" />}
-            />
-            <AnimatedCounter
-              end={50}
-              suffix="+"
-              label="Expert Guides"
-              icon={<Award className="w-8 h-8" />}
-            />
-            <AnimatedCounter
-              end={5}
-              suffix="+"
-              label="Years Experience"
-              icon={<Clock className="w-8 h-8" />}
-            />
-          </div>
-        </div>
-      </section>
+    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+      <AnimatedCounter
+        end={30000}
+        suffix="+"
+        label="Happy Pilgrims"
+        icon={<Users className="w-6 h-6 sm:w-8 sm:h-8" />}
+      />
+      <AnimatedCounter
+        end={1500}
+        suffix="+"
+        label="Tours Completed"
+        icon={<MapPin className="w-6 h-6 sm:w-8 sm:h-8" />}
+      />
+      <AnimatedCounter
+        end={50}
+        suffix="+"
+        label="Expert Guides"
+        icon={<Award className="w-6 h-6 sm:w-8 sm:h-8" />}
+      />
+      <AnimatedCounter
+        end={5}
+        suffix="+"
+        label="Years Experience"
+        icon={<Clock className="w-6 h-6 sm:w-8 sm:h-8" />}
+      />
+    </div>
+  </div>
+</section>
+
 
       {/* Testimonials */}
       <section className="section-padding bg-muted/30">
