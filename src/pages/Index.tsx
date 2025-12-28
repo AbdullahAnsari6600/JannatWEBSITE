@@ -30,12 +30,12 @@ const Index = () => {
   const heroScale = useTransform(scrollY, [0, 500], [1, 1.1]);
 
   const packages = [
-    { image: heroImage, title: 'Premium Hajj Package 2025', location: 'Makkah & Madinah', duration: '21 Days', rating: 4.9, price: 'SAR 0,000', type: 'hajj' as const, featured: true },
-    { image: madinahImage, title: 'Umrah Ramadan Special', location: 'Makkah & Madinah', duration: '14 Days', rating: 4.8, price: 'SAR 0,000', type: 'umrah' as const },
-    { image: uhud, title: 'Complete Ziyarat Tour', location: 'Holy Sites', duration: '7 Days', rating: 4.9, price: 'SAR 0,000', type: 'ziyarat' as const },
-    { image: riyadh, title: 'Discover Saudi Arabia', location: 'Multiple Cities', duration: '10 Days', rating: 4.7, price: 'SAR 0,000', type: 'local' as const },
-    { image: alUla, title: 'Al Ula Heritage Experience', location: 'Al Ula', duration: '5 Days', rating: 4.8, price: 'SAR 0,000', type: 'local' as const },
-    { image: europeTour, title: 'Summer Dream Vacation', location: 'Abha', duration: '12 Days', rating: 4.6, price: 'SAR 0,000', type: 'international' as const },
+    { image: heroImage, title: 'Premium Hajj Package 2025', location: 'Makkah & Madinah', duration: '21 Days', rating: 4.9, type: 'hajj' as const, featured: true },
+    { image: madinahImage, title: 'Umrah Ramadan Special', location: 'Makkah & Madinah', duration: '14 Days', rating: 4.8, type: 'umrah' as const },
+    { image: uhud, title: 'Complete Ziyarat Tour', location: 'Holy Sites', duration: '7 Days', rating: 4.9, type: 'ziyarat' as const },
+    { image: riyadh, title: 'Discover Saudi Arabia', location: 'Multiple Cities', duration: '10 Days', rating: 4.7, type: 'local' as const },
+    { image: alUla, title: 'Al Ula Heritage Experience', location: 'Al Ula', duration: '5 Days', rating: 4.8, type: 'local' as const },
+    { image: europeTour, title: 'Summer Dream Vacation', location: 'Abha', duration: '12 Days', rating: 4.6, type: 'international' as const },
   ];
 
   const trustHighlights = [
