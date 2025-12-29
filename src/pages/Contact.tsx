@@ -43,7 +43,7 @@ const Contact = () => {
   const contactInfo = [
     { icon: Phone, title: 'Phone', value: '+966 54 681 2673 ', link: 'tel:+966546812673' },
     { icon: Mail, title: 'Email', value: 'info@jannattravelsandtours.com', link: 'mailto:info@jannattravelsandtours.com' },
-    { icon: Clock, title: 'Working Hours', value: 'Sat - Thu: 9:00 AM - 6:00 PM' },
+    { icon: Clock, title: 'Working Hours', value: 'Sat - Thu: 10:00 AM - 11:30 PM' },
   ];
   
 
