@@ -396,57 +396,85 @@ const Packages = () => {
 
 
       {/* Package Modal */}
+      {/* Package Modal */}
       {selectedPackage && (
-        <motion.div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-lg flex items-start justify-center p-4 pt-20" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedPackage(null)}>
-          <motion.div className="relative max-w-5xl w-full bg-background rounded-3xl overflow-hidden shadow-2xl" initial={{ scale: 0.9, y: 40 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 40 }} transition={{ type: 'spring', stiffness: 120 }} onClick={e => e.stopPropagation()}>
-            {/* Image */}
-            <div className="relative h-[350px]">
-              <img src={selectedPackage.image} alt={selectedPackage.title} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent" />
-              <button onClick={() => setSelectedPackage(null)} className="absolute top-4 right-4 bg-white/90 rounded-full px-4 py-2 text-sm font-medium hover:bg-white transition">Close</button>
+  <motion.div
+    className="fixed inset-0 z-50 bg-black/70 backdrop-blur-lg flex items-start justify-center p-4 pt-20 sm:pt-24 overflow-auto"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    onClick={() => setSelectedPackage(null)}
+  >
+    <motion.div
+      className="relative w-full max-w-3xl sm:max-w-4xl lg:max-w-5xl bg-background rounded-3xl shadow-2xl"
+      initial={{ scale: 0.9, y: 40 }}
+      animate={{ scale: 1, y: 0 }}
+      exit={{ scale: 0.9, y: 40 }}
+      transition={{ type: 'spring', stiffness: 120 }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Image */}
+      <div className="relative h-60 sm:h-80 md:h-96 w-full flex-shrink-0">
+        <img
+          src={selectedPackage.image}
+          alt={selectedPackage.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent" />
+        <button
+          onClick={() => setSelectedPackage(null)}
+          className="absolute top-4 right-4 bg-white/90 rounded-full px-4 py-2 text-sm font-medium hover:bg-white transition"
+        >
+          Close
+        </button>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 sm:p-8 flex flex-col lg:flex-row gap-6 lg:gap-8 overflow-auto max-h-[calc(100vh-4rem)]">
+        {/* Left */}
+        <div className="flex-1 min-w-0">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3">{selectedPackage.title}</h2>
+          <div className="flex flex-wrap gap-3 text-muted-foreground mb-4 text-sm sm:text-base">
+            <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {selectedPackage.location}</span>
+            <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {selectedPackage.duration}</span>
+            <span className="flex items-center gap-1"><Star className="w-4 h-4 text-gold fill-gold" /> {selectedPackage.rating}</span>
+          </div>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Experience a thoughtfully curated journey designed for comfort, spiritual fulfillment, and peace of mind.
+          </p>
+
+          {/* FAQs */}
+          {selectedPackage.faqs && (
+            <div className="mt-4 sm:mt-6">
+              <h3 className="font-semibold text-lg mb-2">FAQs</h3>
+              <ul className="space-y-2 text-sm sm:text-base">
+                {selectedPackage.faqs.map((faq, i) => (
+                  <li key={i}>
+                    <strong>Q:</strong> {faq.q} <br />
+                    <strong>A:</strong> {faq.a}
+                  </li>
+                ))}
+              </ul>
             </div>
+          )}
+        </div>
 
-            {/* Content */}
-            <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h2 className="font-display text-3xl font-bold mb-3">{selectedPackage.title}</h2>
-                <div className="flex flex-wrap gap-4 text-muted-foreground mb-4">
-                  <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {selectedPackage.location}</span>
-                  <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> {selectedPackage.duration}</span>
-                  <span className="flex items-center gap-1"><Star className="w-4 h-4 text-gold fill-gold" /> {selectedPackage.rating}</span>
-                </div>
-                <p className="text-muted-foreground leading-relaxed mb-4">Experience a thoughtfully curated journey designed for comfort, spiritual fulfillment, and peace of mind.</p>
+        {/* Right */}
+        <div className="flex-1 bg-muted/40 rounded-2xl p-4 sm:p-6 min-w-0">
+          {selectedPackage.inclusions && (
+            <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base">
+              {selectedPackage.inclusions.map((item, i) => (
+                <li key={i}>✔ {item}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  </motion.div>
+)}
 
-                {/* FAQs */}
-                {selectedPackage.faqs && (
-                  <div className="mt-6">
-                    <h3 className="font-semibold text-lg mb-2">FAQs</h3>
-                    <ul className="space-y-2 text-sm">
-                      {selectedPackage.faqs.map((faq, i) => (
-                        <li key={i}>
-                          <strong>Q:</strong> {faq.q} <br />
-                          <strong>A:</strong> {faq.a}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
 
-              {/* Right */}
-              <div className="bg-muted/40 rounded-2xl p-6 flex flex-col justify-between">
-                {selectedPackage.inclusions && (
-                  <ul className="space-y-3 text-sm">
-                    {selectedPackage.inclusions.map((item, i) => (
-                      <li key={i}>✔ {item}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
 
       <Footer />
       <WhatsAppButton />

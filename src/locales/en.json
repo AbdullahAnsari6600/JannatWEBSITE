@@ -25,7 +25,7 @@
     "services": "Services",
     "tours": "Tours",
     "localTours": "Local Saudi Tours",
-    "internationalTours": "International Tours",
+    "internationalTours": "Local Tours",
     "gallery": "Gallery",
     "about": "About",
     "contact": "Contact"
@@ -319,7 +319,7 @@
     "premiumAccommodation": "Premium Accommodation",
     "happyPilgrims": "Happy Pilgrims",
     "alUlaHeritage": "Al Ula Heritage",
-    "internationalTours": "International Tours",
+    "internationalTours": "Local Tours",
     "riyadhCityscape": "Riyadh Cityscape",
     "mountUhud": "Mount Uhud",
     "faqBadge": "FAQs",
