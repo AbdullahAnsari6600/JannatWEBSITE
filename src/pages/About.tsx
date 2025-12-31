@@ -10,24 +10,27 @@ import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { SectionHeading } from '@/components/SectionHeading';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 import madinahImage from '@/assets/madinah-hero.jpg';
 import happyFamily from '@/assets/about.jpg';
 
 const About = () => {
+  const { t } = useLanguage();
+  
   const values = [
-    { icon: Heart, title: 'Trust', description: 'Building lasting relationships through reliability and honesty' },
-    { icon: Eye, title: 'Transparency', description: 'Clear communication and no hidden costs in any service' },
-    { icon: Shield, title: 'Care', description: 'Treating every pilgrim like family with personalized attention' },
-    { icon: Award, title: 'Excellence', description: 'Striving for the highest standards in every journey' },
+    { icon: Heart, title: t.about.trust, description: t.about.trustDesc },
+    { icon: Eye, title: t.about.transparency, description: t.about.transparencyDesc },
+    { icon: Shield, title: t.about.care, description: t.about.careDesc },
+    { icon: Award, title: t.about.excellence, description: t.about.excellenceDesc },
   ];
 
   const milestones = [
-    { year: 'January', title: 'Foundation', description: 'Jannat Travels & Tours established in Riyadh, Saudi Arabia' },
-    { year: 'March', title: 'Expansion', description: 'Extended services to local pilgrims' },
-    { year: 'May', title: 'Growth', description: 'Reached 2,000 pilgrims served milestone' },
-    { year: 'September', title: 'Digital', description: 'Launched online booking and virtual consultation' },
-    { year: 'December - 2025', title: 'Today', description: 'Serving 50,000+ pilgrims with premium experiences' },
+    { year: '2009', title: t.about.foundation, description: t.about.foundationDesc },
+    { year: '2012', title: t.about.expansion, description: t.about.expansionDesc },
+    { year: '2018', title: t.about.growth, description: t.about.growthDesc },
+    { year: '2020', title: t.about.digital, description: t.about.digitalDesc },
+    { year: '2025', title: t.about.today, description: t.about.todayDesc },
   ];
 
   return (
@@ -59,7 +62,7 @@ const About = () => {
         
 
         <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl leading-tight text-center">
-  More About Us
+  {t.about.heroTitle}
 </h1>
 
       </motion.div>
@@ -78,28 +81,15 @@ const About = () => {
               viewport={{ once: true }}
             >
               <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-4">
-                Our Story
+                {t.about.storyBadge}
               </span>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                A Legacy of Trust and Excellence
+                {t.about.storyTitle}
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Founded in 2009, Jannat Travels and Tours began with a simple yet profound mission: 
-                  to make the sacred pilgrimage journey accessible, comfortable, and spiritually enriching 
-                  for Muslims around the world.
-                </p>
-                <p>
-                  Based in Riyadh, Saudi Arabia, we have grown from a small family operation to one of 
-                  the most trusted travel companies in the region. Our deep understanding of the spiritual 
-                  significance of Hajj and Umrah, combined with our commitment to excellence, has helped 
-                  us serve over 50,000 pilgrims.
-                </p>
-                <p>
-                  Today, we offer comprehensive travel solutions including Hajj packages, Umrah tours, 
-                  Ziyarat experiences, local Saudi adventures, and international holiday packages—all 
-                  delivered with the same dedication and care that defined our humble beginnings.
-                </p>
+                <p>{t.about.storyP1}</p>
+                <p>{t.about.storyP2}</p>
+                <p>{t.about.storyP3}</p>
               </div>
             </motion.div>
 
@@ -117,7 +107,7 @@ const About = () => {
 
               <div className="absolute -bottom-6 -left-6 bg-card rounded-2xl shadow-glass-lg p-6">
                 <div className="text-4xl font-bold text-primary">5+</div>
-                <div className="text-muted-foreground">Years of Service</div>
+                <div className="text-muted-foreground">{t.about.yearsOfService}</div>
               </div>
             </motion.div>
           </div>
@@ -137,11 +127,9 @@ const About = () => {
               <div className="w-14 h-14 rounded-2xl gradient-primary flex items-center justify-center mb-6">
                 <Target className="w-7 h-7 text-primary-foreground" />
               </div>
-              <h3 className="font-display text-2xl font-semibold text-foreground mb-4">Our Mission</h3>
+              <h3 className="font-display text-2xl font-semibold text-foreground mb-4">{t.about.missionTitle}</h3>
               <p className="text-muted-foreground leading-relaxed">
-                To provide exceptional pilgrimage and travel experiences that honor the spiritual 
-                significance of sacred journeys while ensuring comfort, safety, and peace of mind 
-                for every traveler who entrusts us with their journey.
+                {t.about.missionDesc}
               </p>
             </motion.div>
 
@@ -155,11 +143,9 @@ const About = () => {
               <div className="w-14 h-14 rounded-2xl gradient-sky flex items-center justify-center mb-6">
                 <Eye className="w-7 h-7 text-secondary-foreground" />
               </div>
-              <h3 className="font-display text-2xl font-semibold text-foreground mb-4">Our Vision</h3>
+              <h3 className="font-display text-2xl font-semibold text-foreground mb-4">{t.about.visionTitle}</h3>
               <p className="text-muted-foreground leading-relaxed">
-                To be the most trusted and preferred travel partner for pilgrims and travelers 
-                worldwide, setting the standard for excellence in religious tourism and creating 
-                transformative travel experiences that inspire and uplift.
+                {t.about.visionDesc}
               </p>
             </motion.div>
           </div>
@@ -170,9 +156,9 @@ const About = () => {
       <section className="section-padding">
         <div className="container-wide">
           <SectionHeading
-            badge="Our Values"
-            title="What We Stand For"
-            subtitle="The principles that guide everything we do"
+            badge={t.about.valuesBadge}
+            title={t.about.valuesTitle}
+            subtitle={t.about.valuesSubtitle}
           />
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -204,9 +190,9 @@ const About = () => {
       <section className="section-padding bg-primary">
         <div className="container-wide">
           <SectionHeading
-            badge="Our Journey"
-            title="Milestones of Growth"
-            subtitle="Key moments in our story of service and excellence - 2025"
+            badge={t.about.journeyBadge}
+            title={t.about.journeyTitle}
+            subtitle={t.about.journeySubtitle}
             light
           />
 
@@ -247,10 +233,10 @@ const About = () => {
       <section className="section-padding">
         <div className="container-wide">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <AnimatedCounter end={30000} suffix="+" label="Pilgrims Served" icon={<Users className="w-8 h-8" />} />
-            <AnimatedCounter end={1500} suffix="+" label="Successful Tours" icon={<MapPin className="w-8 h-8" />} />
-            <AnimatedCounter end={50} suffix="+" label="Expert Team" icon={<Award className="w-8 h-8" />} />
-            <AnimatedCounter end={99} suffix="%" label="Satisfaction Rate" icon={<Star className="w-8 h-8" />} />
+            <AnimatedCounter end={30000} suffix="+" label={t.achievements.pilgrimsServed} icon={<Users className="w-8 h-8" />} />
+            <AnimatedCounter end={1500} suffix="+" label={t.achievements.successfulTours} icon={<MapPin className="w-8 h-8" />} />
+            <AnimatedCounter end={50} suffix="+" label={t.achievements.expertTeam} icon={<Award className="w-8 h-8" />} />
+            <AnimatedCounter end={99} suffix="%" label={t.achievements.satisfactionRate} icon={<Star className="w-8 h-8" />} />
           </div>
         </div>
       </section>
@@ -264,17 +250,17 @@ const About = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Ready to Start Your Journey?
+              {t.cta.readyToStart}
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-              Let us be your trusted partner for an unforgettable pilgrimage or travel experience.
+              {t.cta.readyToStartDesc}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/packages" className="btn-primary">
-                Explore Packages
+                {t.common.explorePackages}
               </Link>
               <Link to="/contact" className="btn-gold">
-                Contact Us
+                {t.common.contactUs}
               </Link>
             </div>
           </motion.div>

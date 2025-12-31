@@ -30,7 +30,11 @@ export const TestimonialCard = ({
       <Quote className="absolute top-6 right-6 w-12 h-12 text-secondary/20" />
       
       {/* Rating */}
-      <div className="flex gap-1 mb-4">
+      <div
+  className="flex gap-1 mb-4 ltr-safe"
+  dir="ltr"
+>
+
         {[...Array(5)].map((_, i) => (
           <Star
             key={i}

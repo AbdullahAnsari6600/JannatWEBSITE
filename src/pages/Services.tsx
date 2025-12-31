@@ -10,6 +10,7 @@ import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 
 import heroImage from '@/assets/hero-makkah.jpg';
@@ -25,62 +26,64 @@ import video8 from '@/assets/videos/wedding.mp4';
 
 
 const Services = () => {
+  const { t } = useLanguage();
+  
   const services = [
     { 
       icon: Plane, 
-      title: 'Flight Booking', 
+      title: t.services.flightBooking, 
       video: video2, 
-      extendedText: 'Best deals on international and domestic flights with flexible booking options and dedicated support for changes and cancellations.', 
-      features: ['Best price guarantee', 'Flexible rebooking', '24/7 support', 'Multiple airlines'] 
+      extendedText: t.services.flightBookingDesc, 
+      features: [t.services.featureBestPrice, t.services.featureFlexibleRebooking, t.services.feature24Support, t.services.featureMultipleAirlines] 
     },
     { 
       icon: FileCheck, 
-      title: 'Hajj & Umrah Packages', 
+      title: t.services.hajjUmrah, 
       video: video1, 
-      extendedText: 'Comprehensive pilgrimage packages with premium accommodations near Haram, guided tours, and spiritual support throughout your sacred journey.', 
-      features: ['5-star hotels', 'Experienced guides', 'All meals included', 'Ground transport'] 
+      extendedText: t.services.hajjUmrahDesc, 
+      features: [t.services.feature5Star, t.services.featureExperiencedGuides, t.services.featureAllMeals, t.services.featureGroundTransport] 
     },
     { 
       icon: Hotel, 
-      title: 'Hotel Reservations', 
+      title: t.services.hotelReservations, 
       video: video3, 
-      extendedText: 'Access to premium hotels worldwide with exclusive rates, especially for properties near holy sites in Makkah and Madinah.', 
-      features: ['Haram view rooms', 'Luxury amenities', 'Early check-in', 'Flexible dates'] 
+      extendedText: t.services.hotelReservationsDesc, 
+      features: [t.services.featureHaramView, t.services.featureLuxuryAmenities, t.services.featureEarlyCheckin, t.services.featureFlexibleDates] 
     },
     { 
       icon: FileCheck, 
-      title: 'Visa Assistance', 
+      title: t.services.visaAssistance, 
       video: video4, 
-      extendedText: 'Complete visa processing services for Saudi Arabia and international destinations with high success rates and quick turnaround.', 
-      features: ['Document preparation', 'Application tracking', 'Expert guidance', 'Fast processing'] 
+      extendedText: t.services.visaAssistanceDesc, 
+      features: [t.services.featureDocPrep, t.services.featureAppTracking, t.services.featureExpertGuidance, t.services.featureFastProcessing] 
     },
     { 
       icon: Bus, 
-      title: 'Transportation', 
+      title: t.services.transportation, 
       video: video5, 
-      extendedText: 'Comfortable and reliable ground transportation services including airport transfers, city tours, and inter-city travel.', 
-      features: ['AC vehicles', 'Professional drivers', 'Door-to-door service', 'GPS tracking'] 
+      extendedText: t.services.transportationDesc, 
+      features: [t.services.featureACVehicles, t.services.featureProfDrivers, t.services.featureDoorToDoor, t.services.featureGPS] 
     },
     { 
       icon: Stethoscope, 
-      title: 'Travel Insurance', 
+      title: t.services.travelInsurance, 
       video: video6, 
-      extendedText: 'Comprehensive travel insurance coverage for medical emergencies, trip cancellations, and lost luggage for peace of mind.', 
-      features: ['Medical coverage', 'Trip cancellation', 'Lost baggage', '24/7 assistance'] 
+      extendedText: t.services.travelInsuranceDesc, 
+      features: [t.services.featureMedicalCoverage, t.services.featureTripCancel, t.services.featureLostBaggage, t.services.feature24Assistance] 
     },
     { 
       icon: Users, 
-      title: 'Group & Corporate Tours', 
+      title: t.services.groupCorporate, 
       video: video7, 
-      extendedText: 'Customized group travel packages for families, organizations, and corporate teams with special rates and dedicated coordinators.', 
-      features: ['Custom itineraries', 'Group discounts', 'Dedicated manager', 'Team building'] 
+      extendedText: t.services.groupCorporateDesc, 
+      features: [t.services.featureCustomItineraries, t.services.featureGroupDiscounts, t.services.featureDedicatedManager, t.services.featureTeamBuilding] 
     },
     { 
       icon: Calendar, 
-      title: 'Event Planning', 
+      title: t.services.eventPlanning, 
       video: video8, 
-      extendedText: 'Special occasion travel planning including weddings, anniversaries, and milestone celebrations with personalized touches.', 
-      features: ['Venue selection', 'Custom experiences', 'Photography', 'Special arrangements'] 
+      extendedText: t.services.eventPlanningDesc, 
+      features: [t.services.featureVenueSelection, t.services.featureCustomExperiences, t.services.featurePhotography, t.services.featureSpecialArrangements] 
     },
   ];
 
@@ -134,7 +137,7 @@ const Services = () => {
         
 
         <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl">
-          Complete Travel Solutions
+          {t.services.heroTitle}
         </h1>
       </motion.div>
     </div>
@@ -219,16 +222,16 @@ const Services = () => {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-forest via-forest-light to-forest text-center">
         <h2 className="font-sans text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
-          Ready to Start Your Journey?
+          {t.cta.readyToStart}
         </h2>
         <p className="font-sans text-sage/80 text-lg mb-8 max-w-xl mx-auto">
-          Contact us today for a free consultation and package.
+          {t.cta.readyToStartDesc}
         </p>
         <Link
           to="/contact"
           className="inline-flex items-center gap-3 px-10 py-5 bg-gold text-forest font-sans font-bold text-lg rounded-full hover:bg-gold-light transition-all duration-300 shadow-gold hover:shadow-lg hover:scale-105"
         >
-          Request a Quote
+          {t.cta.talkToExpert}
           <ArrowRight className="w-5 h-5" />
         </Link>
       </section>

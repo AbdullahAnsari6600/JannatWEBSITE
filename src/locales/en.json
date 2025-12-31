@@ -169,9 +169,9 @@
     "transportServices": "Transport Services",
     "travelInsurance": "Travel Insurance",
     "groupTours": "Group Tours",
-    "address": "King Fahd Road, Al Olaya District",
+    "address": "3570 Abu Ayyub Al-Ansari,7054 , Almarqab, Riyadh, 12646",
     "city": "Riyadh, Saudi Arabia",
-    "workingHours": "Sun - Thu: 9AM - 6PM",
+    "workingHours": "Sat - Thu: 10 AM - 11:30 PM",
     "copyright": "Jannat Travels and Tours. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service"
@@ -279,7 +279,7 @@
     "phone": "Phone",
     "email": "Email",
     "workingHours": "Working Hours",
-    "workingHoursValue": "Sun - Thu: 9:00 AM - 6:00 PM",
+    "workingHoursValue": "Sat - Thu: 10:00 AM - 11:30 PM",
     "whatsappChat": "Chat on WhatsApp",
     "whatsappInstant": "Get instant response",
     "fullName": "Full Name",
@@ -305,7 +305,7 @@
   },
   "gallery": {
     "badge": "Our Gallery",
-    "heroTitle": "Memorable Moments",
+    "heroTitle": "Memorable Moments & FAQ's",
     "sectionBadge": "Photo Gallery",
     "sectionTitle": "Captured Experiences",
     "sectionSubtitle": "Browse through our collection of unforgettable travel moments",
@@ -321,7 +321,10 @@
     "alUlaHeritage": "Al Ula Heritage",
     "internationalTours": "International Tours",
     "riyadhCityscape": "Riyadh Cityscape",
-    "mountUhud": "Mount Uhud"
+    "mountUhud": "Mount Uhud",
+    "faqBadge": "FAQs",
+    "faqTitle": "Frequently Asked Questions",
+    "faqSubtitle": "Everything you need to know about Umrah, Hajj & Saudi tours"
   },
   "hajjPage": {
     "badge": "Hajj 2025",
@@ -398,5 +401,28 @@
   },
   "durations": {
     "days": "Days"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "returnHome": "Return to Home"
+  },
+  "faq": {
+    "q1": "What is included in your Umrah packages?",
+    "a1": "Our Umrah packages typically include visa processing, round-trip transportation, hotel accommodation near Haram, guided Ziyarat tours, and dedicated assistance throughout your spiritual journey.",
+    "q2": "Do you provide Hajj packages for all categories?",
+    "a2": "Yes. We offer economical, standard, and luxury Hajj packages, covering accommodation, transportation, Mina–Arafat services, meals, and experienced group guides in accordance with Saudi regulations.",
+    "q3": "How early should I book Umrah or Hajj?",
+    "a3": "For Umrah, booking 4–6 weeks in advance is recommended. Hajj packages should be booked several months earlier due to limited quotas and high demand.",
+    "q4": "Is Saudi Umrah visa included in the package?",
+    "a4": "Yes. We handle complete Umrah visa processing, documentation, and approvals as part of our Umrah packages.",
+    "q5": "Do you arrange hotels near Haram in Makkah and Madinah?",
+    "a5": "Absolutely. We provide carefully selected hotels at walking distance or with shuttle services, depending on the chosen package.",
+    "q6": "Are Ziyarat tours included?",
+    "a6": "Yes. Our packages include guided Ziyarat tours in Makkah and Madinah, covering important Islamic historical sites.",
+    "q7": "Do you offer family and group packages?",
+    "a7": "Yes. We specialize in family, group, and elderly-friendly packages with customized arrangements.",
+    "q8": "Is local Saudi sightseeing included?",
+    "a8": "We offer optional tours to destinations like Taif, Abha, AlUla, and Riyadh as add-ons to Umrah or separate tour packages."
   }
 }

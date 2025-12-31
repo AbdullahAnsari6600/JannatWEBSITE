@@ -9,10 +9,12 @@ import { useToast } from '@/hooks/use-toast';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 import madinahImage from '@/assets/madinah-hero.jpg';
 
 const Contact = () => {
+  const { t } = useLanguage();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
@@ -32,8 +34,8 @@ const Contact = () => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
     
     toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+      title: t.contact.messageSent,
+      description: t.contact.messageSuccess,
     });
     
     setFormData({ name: '', email: '', phone: '', subject: '', message: '', package: '' });
@@ -41,24 +43,26 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: Phone, title: 'Phone', value: '+966 54 681 2673 ', link: 'tel:+966546812673' },
-    { icon: Mail, title: 'Email', value: 'info@jannattravelsandtours.com', link: 'mailto:info@jannattravelsandtours.com' },
-    { icon: Clock, title: 'Working Hours', value: 'Sat - Thu: 10:00 AM - 11:30 PM' },
+    { id: 'phone1', icon: Phone, title: t.contact.phone, value: '+966 54 681 2673', link: 'tel:+966546812673' },
+    { id: 'phone2', icon: Phone, title: t.contact.phone, value: '+966 54 416 7162', link: 'tel:+966544167162' },
+    { id: 'email', icon: Mail, title: t.contact.email, value: 'info@jannattravelsandtours.com', link: 'mailto:info@jannattravelsandtours.com' },
+    { id: 'hours', icon: Clock, title: t.contact.workingHours, value: t.contact.workingHoursValue },
   ];
+  
   
 
   const packages = [
-    'Hajj Package',
-    'Umrah Package',
-    'Ziyarat Tour',
-    'Local Saudi Tour',
-    'International Tour',
-    'Custom Package',
-    'Other Inquiry',
+    t.contact.packageHajj,
+    t.contact.packageUmrah,
+    t.contact.packageZiyarat,
+    t.contact.packageLocalSaudi,
+    t.contact.packageInternational,
+    t.contact.packageCustom,
+    t.contact.packageOther,
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="ltr-safe min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Section */}
@@ -109,10 +113,10 @@ const Contact = () => {
       transition={{ duration: 0.8 }}
     >
       <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl">
-        Contact Us
+        {t.contact.heroTitle}
       </h1>
       <p className="text-white/90 mt-4 text-lg md:text-xl drop-shadow-lg max-w-2xl mx-auto">
-        Reach out for your Hajj, Umrah, Ziyarat, or other travel inquiries.
+        {t.contact.conversationDesc}
       </p>
     </motion.div>
   </div>
@@ -130,17 +134,17 @@ const Contact = () => {
             <div className="space-y-8">
               <div>
                 <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-                  Let's Start a Conversation
+                  {t.contact.conversationTitle}
                 </h2>
                 <p className="text-muted-foreground">
-                  Have questions about our packages or need a custom itinerary? 
-                  We're here to help you plan your perfect journey.
+                  {t.contact.conversationDesc}
                 </p>
               </div>
 
               <div className="space-y-6">
               {contactInfo.map((info) => (
-  <div key={info.title}>
+  <div key={info.id}>
+
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
@@ -170,7 +174,7 @@ const Contact = () => {
     </motion.div>
 
     {/* ✅ MAP OUTSIDE FLEX — FULL WIDTH */}
-    {info.title === 'Working Hours' && (
+    {info.title === t.contact.workingHours && (
       <div className="mt-4 space-y-2">
         {/* Address */}
         <div className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -209,8 +213,8 @@ const Contact = () => {
                   <MessageCircle className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">Chat on WhatsApp</h3>
-                  <p className="text-sm text-muted-foreground">Get instant response</p>
+                  <h3 className="font-semibold text-foreground">{t.contact.whatsappChat}</h3>
+                  <p className="text-sm text-muted-foreground">{t.contact.whatsappInstant}</p>
                 </div>
               </motion.a>
             </div>
@@ -225,13 +229,13 @@ const Contact = () => {
                 className="premium-card p-8"
               >
                 <h2 className="font-display text-2xl font-bold text-foreground mb-6">
-                  Send us a Message
+                  {t.contact.formTitle}
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Full Name *
+                      {t.contact.fullName} *
                     </label>
                     <input
                       type="text"
@@ -239,13 +243,13 @@ const Contact = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
-                      placeholder="Your full name"
+                      placeholder={t.contact.fullNamePlaceholder}
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Email Address *
+                      {t.contact.emailAddress} *
                     </label>
                     <input
                       type="email"
@@ -253,33 +257,38 @@ const Contact = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
-                      placeholder="your@email.com"
+                      placeholder={t.contact.emailPlaceholder}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
-                      placeholder="+966 XX XXX XXXX"
-                    />
-                  </div>
+  <label className="block text-sm font-medium text-foreground mb-2">
+    {t.contact.phoneNumber}
+  </label>
+  <input
+    type="text"
+    value={formData.phone}
+    onChange={(e) => {
+      // Allow only digits
+      const onlyNumbers = e.target.value.replace(/\D/g, '');
+      setFormData({ ...formData, phone: onlyNumbers });
+    }}
+    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+    placeholder={t.contact.phonePlaceholder}
+  />
+</div>
+
 
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Interested Package
+                      {t.contact.interestedPackage}
                     </label>
                     <select
                       value={formData.package}
                       onChange={(e) => setFormData({ ...formData, package: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
                     >
-                      <option value="">Select a package</option>
+                      <option value="">{t.common.selectPackage}</option>
                       {packages.map((pkg) => (
                         <option key={pkg} value={pkg}>{pkg}</option>
                       ))}
@@ -288,7 +297,7 @@ const Contact = () => {
 
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Subject *
+                      {t.contact.subject} *
                     </label>
                     <input
                       type="text"
@@ -296,13 +305,13 @@ const Contact = () => {
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
-                      placeholder="How can we help you?"
+                      placeholder={t.contact.subjectPlaceholder}
                     />
                   </div>
 
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Message *
+                      {t.contact.message} *
                     </label>
                     <textarea
                       required
@@ -310,7 +319,7 @@ const Contact = () => {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all resize-none"
-                      placeholder="Tell us more about your travel plans..."
+                      placeholder={t.contact.messagePlaceholder}
                     />
                   </div>
                 </div>
@@ -321,10 +330,10 @@ const Contact = () => {
                   className="mt-6 btn-primary w-full md:w-auto disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    'Sending...'
+                    t.common.sending
                   ) : (
                     <>
-                      Send Message
+                      {t.common.sendMessage}
                       <Send className="w-5 h-5" />
                     </>
                   )}

@@ -13,6 +13,7 @@ import { PackageCard } from '@/components/PackageCard';
 import { SectionHeading } from '@/components/SectionHeading';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { TestimonialCard } from '@/components/TestimonialCard';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Import images
 import heroImage from '@/assets/hero-makkah.jpg';
@@ -25,74 +26,75 @@ import riyadh from '@/assets/riyadh.jpg';
 import uhud from '@/assets/uhud.jpg';
 
 const Index = () => {
+  const { t } = useLanguage();
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 500], [1, 0]);
   const heroScale = useTransform(scrollY, [0, 500], [1, 1.1]);
 
   const packages = [
-    { image: heroImage, title: 'Premium Hajj Package 2025', location: 'Makkah & Madinah', duration: '21 Days', rating: 4.9, type: 'hajj' as const, featured: true },
-    { image: madinahImage, title: 'Umrah Ramadan Special', location: 'Makkah & Madinah', duration: '14 Days', rating: 4.8, type: 'umrah' as const },
-    { image: uhud, title: 'Complete Ziyarat Tour', location: 'Holy Sites', duration: '7 Days', rating: 4.9, type: 'ziyarat' as const },
-    { image: riyadh, title: 'Discover Saudi Arabia', location: 'Multiple Cities', duration: '10 Days', rating: 4.7, type: 'local' as const },
-    { image: alUla, title: 'Al Ula Heritage Experience', location: 'Al Ula', duration: '5 Days', rating: 4.8, type: 'local' as const },
-    { image: europeTour, title: 'Summer Dream Vacation', location: 'Abha', duration: '12 Days', rating: 4.6, type: 'international' as const },
+    { image: heroImage, title: t.packages.premiumHajj2025, location: t.locations.makkahMadinah, duration: '21 Days', rating: 4.9, type: 'hajj' as const, featured: true },
+    { image: madinahImage, title: t.packages.umrahRamadan, location: t.locations.makkahMadinah, duration: '14 Days', rating: 4.8, type: 'umrah' as const },
+    { image: uhud, title: t.packages.completeZiyarat, location: t.locations.holySites, duration: '7 Days', rating: 4.9, type: 'ziyarat' as const },
+    { image: riyadh, title: t.packages.discoverSaudi, location: t.locations.multipleCities, duration: '10 Days', rating: 4.7, type: 'local' as const },
+    { image: alUla, title: t.packages.alUlaHeritage, location: t.locations.alUla, duration: '5 Days', rating: 4.8, type: 'local' as const },
+    { image: europeTour, title: t.packages.europeanDream, location: t.locations.europe, duration: '12 Days', rating: 4.6, type: 'international' as const },
   ];
 
   const trustHighlights = [
-    { icon: Shield, title: 'Saudi Licensed', description: 'Fully licensed and compliant with Saudi regulations' },
-    { icon: Award, title: '5+ Years Experience', description: 'Trusted by thousands of pilgrims worldwide' },
-    { icon: Users, title: 'Expert Guides', description: 'Knowledgeable religious and tour guides' },
-    { icon: HeartHandshake, title: 'End-to-End Support', description: 'Complete travel solutions from start to finish' },
+    { icon: Shield, title: t.trustHighlights.saudiLicensed, description: t.trustHighlights.saudiLicensedDesc },
+    { icon: Award, title: t.trustHighlights.yearsExperience, description: t.trustHighlights.yearsExperienceDesc },
+    { icon: Users, title: t.trustHighlights.expertGuides, description: t.trustHighlights.expertGuidesDesc },
+    { icon: HeartHandshake, title: t.trustHighlights.endToEndSupport, description: t.trustHighlights.endToEndSupportDesc },
   ];
 
   const inclusions = [
-    { icon: Hotel, label: 'Premium Hotels' },
-    { icon: Utensils, label: 'Meals Included' },
-    { icon: Bus, label: 'Transportation' },
-    { icon: Users, label: 'Tour Managers' },
-    { icon: Plane, label: 'Airfare' },
-    { icon: FileCheck, label: 'Visa Assistance' },
+    { icon: Hotel, label: t.inclusions.premiumHotels },
+    { icon: Utensils, label: t.inclusions.mealsIncluded },
+    { icon: Bus, label: t.inclusions.transportation },
+    { icon: Users, label: t.inclusions.tourManagers },
+    { icon: Plane, label: t.inclusions.airfare },
+    { icon: FileCheck, label: t.inclusions.visaAssistance },
   ];
 
   const whyChooseUs = [
-    { icon: Globe, title: 'Deep Cultural Understanding', description: 'Our team understands the spiritual significance and cultural nuances of pilgrimage journeys.' },
-    { icon: Shield, title: 'Transparent Pricing', description: 'No hidden costs. What you see is what you pay. Complete transparency in all our packages.' },
-    { icon: Users, title: 'Multilingual Support', description: 'We support Arabic, English, Hindi, Urdu, Bengali, and more for seamless communication.' },
+    { icon: Globe, title: t.whyChooseUs.culturalUnderstanding, description: t.whyChooseUs.culturalUnderstandingDesc },
+    { icon: Shield, title: t.whyChooseUs.transparentPricing, description: t.whyChooseUs.transparentPricingDesc },
+    { icon: Users, title: t.whyChooseUs.multilingualSupport, description: t.whyChooseUs.multilingualSupportDesc },
   ];
 
   const testimonials = [
     {
-      name: 'Ahmed Al-Rashid',
-      location: 'Jeddah, Saudi Arabia',
+      name: t.testimonials.testimonial1Name,
+      location: t.testimonials.testimonial1Location,
       image: happyFamily,
       rating: 5,
-      text: 'An absolutely wonderful experience. Jannat Travels took care of every detail of our Hajj journey. The guides were knowledgeable and the accommodations were excellent.',
-      tour: 'Premium Hajj Package 2024',
+      text: t.testimonials.testimonial1Text,
+      tour: t.testimonials.testimonial1Tour,
     },
     {
-      name: 'Fatima Hassan',
-      location: 'Delhi, India',
+      name: t.testimonials.testimonial2Name,
+      location: t.testimonials.testimonial2Location,
       image: happyFamily,
       rating: 5,
-      text: 'Our family Umrah trip was perfectly organized. From visa assistance to hotel bookings, everything was seamless. Highly recommended!',
-      tour: 'Family Umrah Package',
+      text: t.testimonials.testimonial2Text,
+      tour: t.testimonials.testimonial2Tour,
     },
     {
-      name: 'Mohammad Khan',
-      location: 'Dhaka, Bangladesh',
+      name: t.testimonials.testimonial3Name,
+      location: t.testimonials.testimonial3Location,
       image: happyFamily,
       rating: 5,
-      text: 'The Ziyarat tour was spiritually enriching. Our guide shared beautiful stories about each holy site. A truly memorable experience.',
-      tour: 'Complete Ziyarat Tour',
+      text: t.testimonials.testimonial3Text,
+      tour: t.testimonials.testimonial3Tour,
     },
   ];
 
   const processSteps = [
-    { step: '01', title: 'Consultation', description: 'Discuss your travel needs and preferences with our experts' },
-    { step: '02', title: 'Customization', description: 'We tailor the perfect package based on your requirements' },
-    { step: '03', title: 'Booking', description: 'Secure your journey with easy payment options' },
-    { step: '04', title: 'Travel', description: 'Enjoy a seamless, worry-free travel experience' },
-    { step: '05', title: 'Support', description: '24/7 assistance throughout your journey' },
+    { step: '01', title: t.process.consultation, description: t.process.consultationDesc },
+    { step: '02', title: t.process.customization, description: t.process.customizationDesc },
+    { step: '03', title: t.process.booking, description: t.process.bookingDesc },
+    { step: '04', title: t.process.travel, description: t.process.travelDesc },
+    { step: '05', title: t.process.support, description: t.process.supportDesc },
   ];
 
   return (
@@ -123,29 +125,29 @@ const Index = () => {
       className="max-w-2xl text-left"
     >
       <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold text-sm font-medium mb-6">
-        Saudi Arabia's Premier Travel Partner
+        {t.hero.badge}
       </span>
       <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6">
-        Your Trusted Partner for{' '}
-        <span className="text-sky-blue-light">Hajj, Umrah & Ziyarat</span>{' '}
-        Journeys
+        {t.hero.title}{' '}
+        <span className="text-sky-blue-light">{t.hero.titleHighlight}</span>{' '}
+        {t.hero.titleEnd}
       </h1>
       <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-      Let Your Journey Be Stress-Free and Spiritually Enriching. Jannat Travels Provides Complete Travel Solutions for Pilgrimages and Holidays.
+        {t.hero.subtitle}
       </p>
       <div className="flex flex-wrap gap-4">
         <Link
           to="/packages"
           className="btn-primary px-6 py-2 text-base flex items-center gap-2 rounded-lg"
         >
-          View Packages
+          {t.common.viewPackages}
           <ArrowRight className="w-4 h-4" />
         </Link>
         <Link
           to="/contact"
           className="btn-secondary px-6 py-2 text-base flex items-center gap-2 rounded-lg"
         >
-          Contact Us
+          {t.common.contactUs}
         </Link>
       </div>
     </motion.div>
@@ -163,12 +165,11 @@ const Index = () => {
     {/* Section Heading */}
     <div className="mb-16 text-center">
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-sky-500 mb-4">
-        Why Choose <span className="text-gold">Jannat</span> Travels?
+        {t.whyChooseUs.title.replace('Experience the Difference', 'Why Choose Jannat Travels?')}
       </h2>
 
       <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-        We provide seamless, professional, and spiritually enriching travel experiences. 
-        From Hajj and Umrah journeys to Ziyarat tours and international holidays, our expert team ensures your journey is safe, comfortable, and unforgettable.
+        {t.whyChooseUs.subtitle}
       </p>
     </div>
 
@@ -228,9 +229,9 @@ const Index = () => {
       <section className="section-padding bg-muted/30">
   <div className="container-wide">
     <SectionHeading
-      badge="Our Packages"
-      title="Popular Travel Experiences"
-      subtitle="Discover our most sought-after pilgrimage and holiday packages, designed to create lasting memories"
+      badge={t.packages.badge}
+      title={t.packages.title}
+      subtitle={t.packages.subtitle}
     />
 
     <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -251,8 +252,14 @@ const Index = () => {
           <div className="p-6">
             <h3 className="font-bold text-xl mb-2">{pkg.title}</h3>
             <p className="text-muted-foreground mb-2">{pkg.location}</p>
-            <p className="text-muted-foreground mb-4">{pkg.duration} • ⭐ {pkg.rating}</p>
-            <p className="font-bold text-primary">{pkg.price}</p>
+            <p className="text-muted-foreground mb-4 flex items-center gap-2">
+  <span className="ltr-safe">{pkg.duration}</span>
+  <span>•</span>
+  <span className="ltr-safe flex items-center gap-1">
+    ⭐ <span>{pkg.rating}</span>
+  </span>
+</p>
+
           </div>
         </motion.div>
       ))}
@@ -260,7 +267,7 @@ const Index = () => {
 
     <div className="text-center mt-12">
       <Link to="/packages" className="btn-primary inline-flex items-center gap-2">
-        View All Packages
+        {t.common.viewAllPackages}
         <ChevronRight className="w-5 h-5" />
       </Link>
     </div>
@@ -272,9 +279,9 @@ const Index = () => {
       <section className="section-padding">
         <div className="container-wide">
           <SectionHeading
-            badge="What's Included"
-            title="Complete Travel Solutions"
-            subtitle="Every package includes premium amenities and services for a worry-free journey"
+            badge={t.inclusions.badge}
+            title={t.inclusions.title}
+            subtitle={t.inclusions.subtitle}
           />
 
           <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -301,9 +308,9 @@ const Index = () => {
       <section className="section-padding bg-primary">
         <div className="container-wide">
           <SectionHeading
-            badge="Why Jannat Travels"
-            title="Experience the Difference"
-            subtitle="What sets us apart from the rest in pilgrimage and travel services"
+            badge={t.whyChooseUs.badge}
+            title={t.whyChooseUs.title}
+            subtitle={t.whyChooseUs.subtitle}
             light
           />
 
@@ -336,34 +343,34 @@ const Index = () => {
       <section className="section-padding">
   <div className="container-wide">
     <SectionHeading
-      badge="Our Achievements"
-      title="Trusted by Thousands"
-      subtitle="Numbers that speak for our dedication and commitment to excellence"
+      badge={t.achievements.badge}
+      title={t.achievements.title}
+      subtitle={t.achievements.subtitle}
     />
 
     <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
       <AnimatedCounter
         end={30000}
         suffix="+"
-        label="Happy Pilgrims"
+        label={t.achievements.happyPilgrims}
         icon={<Users className="w-6 h-6 sm:w-8 sm:h-8" />}
       />
       <AnimatedCounter
         end={1500}
         suffix="+"
-        label="Tours Completed"
+        label={t.achievements.toursCompleted}
         icon={<MapPin className="w-6 h-6 sm:w-8 sm:h-8" />}
       />
       <AnimatedCounter
         end={50}
         suffix="+"
-        label="Expert Guides"
+        label={t.achievements.expertGuides}
         icon={<Award className="w-6 h-6 sm:w-8 sm:h-8" />}
       />
       <AnimatedCounter
         end={5}
         suffix="+"
-        label="Years Experience"
+        label={t.achievements.yearsExperience}
         icon={<Clock className="w-6 h-6 sm:w-8 sm:h-8" />}
       />
     </div>
@@ -375,9 +382,9 @@ const Index = () => {
       <section className="section-padding bg-muted/30">
         <div className="container-wide">
           <SectionHeading
-            badge="Testimonials"
-            title="What Our Pilgrims Say"
-            subtitle="Real experiences from travelers who chose Jannat Travels for their journey"
+            badge={t.testimonials.badge}
+            title={t.testimonials.title}
+            subtitle={t.testimonials.subtitle}
           />
 
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -392,9 +399,9 @@ const Index = () => {
       <section className="section-padding">
         <div className="container-wide">
           <SectionHeading
-            badge="How It Works"
-            title="Your Journey With Us"
-            subtitle="A simple and seamless process from planning to traveling"
+            badge={t.process.badge}
+            title={t.process.title}
+            subtitle={t.process.subtitle}
           />
 
           <div className="mt-16 relative">
@@ -443,19 +450,18 @@ const Index = () => {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-              Begin Your Spiritual Journey Today
+              {t.cta.spiritualJourney}
             </h2>
             <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto mb-8">
-              Let us help you create an unforgettable pilgrimage experience. 
-              Contact us to plan your perfect trip.
+              {t.cta.spiritualJourneyDesc}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/packages" className="btn-gold text-lg">
-                Explore Packages
+                {t.common.explorePackages}
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link to="/contact" className="btn-secondary text-lg">
-                Get in Touch
+                {t.common.getInTouch}
               </Link>
             </div>
           </motion.div>

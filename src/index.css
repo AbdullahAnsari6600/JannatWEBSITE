@@ -265,6 +265,11 @@
     transform: scale(1.1);
     box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
   }
+  .ltr-safe {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+  
   
   /* Navigation Glass */
   .nav-glass {

@@ -1,24 +1,29 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Phone, Mail } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'Packages', path: '/packages' },
-  { name: 'Services', path: '/services' },
-  { name: 'Gallery', path: '/gallery' },
-  { name: 'About', path: '/about' },
-  { name: 'Contact', path: '/contact' },
+const navLinksConfig = [
+  { key: 'home', path: '/' },
+  { key: 'packages', path: '/packages' },
+  { key: 'services', path: '/services' },
+  { key: 'gallery', path: '/gallery' },
+  { key: 'about', path: '/about' },
+  { key: 'contact', path: '/contact' },
 ];
 
 
 
 export const Navbar = () => {
+  const { language, setLanguage, t, isRTL } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'ar' : 'en');
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,66 +73,62 @@ export const Navbar = () => {
 
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center gap-1">
-        {navLinks.map((link) => (
-          <div key={link.name} className="relative"
-               onMouseEnter={() => link.submenu && setActiveDropdown(link.name)}
-               onMouseLeave={() => setActiveDropdown(null)}>
-            <Link
-              to={link.path}
-              className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-1 ${
-                location.pathname === link.path
-                  ? 'text-secondary bg-secondary/10'
-                  : 'text-foreground hover:text-secondary hover:bg-secondary/5'
-              }`}
-            >
-              {link.name}
-              {link.submenu && <ChevronDown className="w-4 h-4" />}
-            </Link>
-
-            {/* Dropdown */}
-            <AnimatePresence>
-              {link.submenu && activeDropdown === link.name && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-2 w-56 bg-card rounded-xl shadow-glass-lg border border-border overflow-hidden z-50"
-                >
-                  {link.submenu.map((sublink) => (
-                    <Link
-                      key={sublink.name}
-                      to={sublink.path}
-                      className="block px-4 py-3 text-foreground hover:bg-secondary/10 hover:text-secondary transition-colors"
-                    >
-                      {sublink.name}
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+        {navLinksConfig.map((link) => (
+          <Link
+            key={link.key}
+            to={link.path}
+            className={`px-4 py-2 rounded-lg font-medium transition-all ${
+              location.pathname === link.path
+                ? 'text-secondary bg-secondary/10'
+                : 'text-foreground hover:text-secondary hover:bg-secondary/5'
+            }`}
+          >
+            {t.nav[link.key as keyof typeof t.nav]}
+          </Link>
         ))}
       </div>
 
-      {/* CTA Button */}
+      {/* Language Switcher & CTA Button */}
       <div className="hidden lg:flex items-center gap-4">
-  <Link 
-    to="/contact" 
-    className="btn-primary text-sm px-4 py-2.5"
-  >
-    Book Now
-  </Link>
-</div>
+        {/* Language Switcher Button */}
+        <button
+          onClick={toggleLanguage}
+          className="p-2 rounded-lg hover:bg-muted transition-colors flex items-center gap-2 text-foreground hover:text-secondary"
+          aria-label="Toggle language"
+          title={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+        >
+          <Globe className="w-5 h-5" />
+          <span className="text-sm font-medium">{language === 'en' ? 'AR' : 'EN'}</span>
+        </button>
+        
+        <Link 
+          to="/contact" 
+          className="btn-primary text-sm px-4 py-2.5"
+        >
+          {t.common.bookNow}
+        </Link>
+      </div>
 
 
-      {/* Mobile Menu Button */}
-      <button
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="lg:hidden p-2 rounded-lg hover:bg-muted transition-colors"
-      >
-        {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-      </button>
+      {/* Mobile Menu Button & Language Switcher */}
+      <div className="lg:hidden flex items-center gap-2">
+        {/* Language Switcher Button - Mobile */}
+        <button
+          onClick={toggleLanguage}
+          className="p-2 rounded-lg hover:bg-muted transition-colors flex items-center gap-1 text-foreground"
+          aria-label="Toggle language"
+        >
+          <Globe className="w-5 h-5" />
+          <span className="text-sm font-medium">{language === 'en' ? 'AR' : 'EN'}</span>
+        </button>
+        
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="p-2 rounded-lg hover:bg-muted transition-colors"
+        >
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
 
     </div>
   </div>
@@ -142,8 +143,8 @@ export const Navbar = () => {
         className="lg:hidden bg-card border-t border-border"
       >
         <div className="container-wide py-4 space-y-2">
-          {navLinks.map((link) => (
-            <div key={link.name}>
+          {navLinksConfig.map((link) => (
+            <div key={link.key}>
               <Link
                 to={link.path}
                 className={`block px-4 py-3 rounded-lg font-medium transition-colors ${
@@ -152,26 +153,13 @@ export const Navbar = () => {
                     : 'text-foreground hover:bg-muted'
                 }`}
               >
-                {link.name}
+                {t.nav[link.key as keyof typeof t.nav]}
               </Link>
-              {link.submenu && (
-                <div className="ml-4 mt-1 space-y-1">
-                  {link.submenu.map((sublink) => (
-                    <Link
-                      key={sublink.name}
-                      to={sublink.path}
-                      className="block px-4 py-2 text-sm text-muted-foreground hover:text-secondary transition-colors"
-                    >
-                      {sublink.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
             </div>
           ))}
           <div className="pt-4">
             <Link to="/contact" className="btn-primary w-full text-center">
-              Book Now
+              {t.common.bookNow}
             </Link>
           </div>
         </div>
