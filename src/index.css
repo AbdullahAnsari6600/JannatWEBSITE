@@ -271,6 +271,7 @@
   }
   
   
+  
   /* Navigation Glass */
   .nav-glass {
     @apply fixed top-0 z-50 w-full border-b border-white/10;

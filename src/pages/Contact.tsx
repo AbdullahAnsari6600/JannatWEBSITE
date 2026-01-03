@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  MapPin, Phone, Mail, Clock, Send, MessageCircle, 
-  Building, Globe, CheckCircle
+  MapPin, Phone, Mail, Clock, Send, MessageCircle
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -10,6 +9,8 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useEffect, useRef } from 'react';
+
 
 import madinahImage from '@/assets/madinah-hero.jpg';
 
@@ -24,102 +25,77 @@ const Contact = () => {
     subject: '',
     message: '',
     package: '',
+    travelMonth: '', // ✅ NEW
   });
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  const handleClickOutside = (e: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      setDropdownOpen(false);
+    }
+  };
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => document.removeEventListener('mousedown', handleClickOutside);
+}, []);
+  // Country codes with Flagcdn
   const countryCodes = [
-    { code: '+1', label: '🇺🇸 United States' },
-    { code: '+1', label: '🇨🇦 Canada' },
-    { code: '+44', label: '🇬🇧 United Kingdom' },
-    { code: '+91', label: '🇮🇳 India' },
-    { code: '+61', label: '🇦🇺 Australia' },
-    { code: '+49', label: '🇩🇪 Germany' },
-    { code: '+33', label: '🇫🇷 France' },
-    { code: '+39', label: '🇮🇹 Italy' },
-    { code: '+81', label: '🇯🇵 Japan' },
-    { code: '+86', label: '🇨🇳 China' },
-    { code: '+7', label: '🇷🇺 Russia' },
-    { code: '+966', label: '🇸🇦 Saudi Arabia' },
-    { code: '+971', label: '🇦🇪 UAE' },
-    { code: '+92', label: '🇵🇰 Pakistan' },
-    { code: '+880', label: '🇧🇩 Bangladesh' },
-    { code: '+27', label: '🇿🇦 South Africa' },
-    { code: '+34', label: '🇪🇸 Spain' },
-    { code: '+46', label: '🇸🇪 Sweden' },
-    { code: '+47', label: '🇳🇴 Norway' },
-    { code: '+31', label: '🇳🇱 Netherlands' },
-    { code: '+48', label: '🇵🇱 Poland' },
-    { code: '+41', label: '🇨🇭 Switzerland' },
-    { code: '+420', label: '🇨🇿 Czech Republic' },
-    { code: '+43', label: '🇦🇹 Austria' },
-    { code: '+351', label: '🇵🇹 Portugal' },
-    { code: '+353', label: '🇮🇪 Ireland' },
-    { code: '+358', label: '🇫🇮 Finland' },
-    { code: '+64', label: '🇳🇿 New Zealand' },
-    { code: '+60', label: '🇲🇾 Malaysia' },
-    { code: '+65', label: '🇸🇬 Singapore' },
-    { code: '+62', label: '🇮🇩 Indonesia' },
-    { code: '+66', label: '🇹🇭 Thailand' },
-    { code: '+95', label: '🇲🇲 Myanmar' },
-    { code: '+84', label: '🇻🇳 Vietnam' },
-    { code: '+63', label: '🇵🇭 Philippines' },
-    { code: '+234', label: '🇳🇬 Nigeria' },
-    { code: '+254', label: '🇰🇪 Kenya' },
-    { code: '+20', label: '🇪🇬 Egypt' },
-    { code: '+211', label: '🇸🇸 South Sudan' },
-    { code: '+212', label: '🇲🇦 Morocco' },
-    { code: '+974', label: '🇶🇦 Qatar' },
-    { code: '+965', label: '🇰🇼 Kuwait' },
-    { code: '+968', label: '🇴🇲 Oman' },
-    { code: '+973', label: '🇧🇭 Bahrain' },
-    { code: '+998', label: '🇺🇿 Uzbekistan' },
-    { code: '+992', label: '🇹🇯 Tajikistan' },
-    { code: '+993', label: '🇹🇲 Turkmenistan' },
-    { code: '+995', label: '🇬🇪 Georgia' },
-    { code: '+996', label: '🇰🇬 Kyrgyzstan' },
-    { code: '+880', label: '🇧🇩 Bangladesh' },
-    { code: '+886', label: '🇹🇼 Taiwan' },
-    { code: '+82', label: '🇰🇷 South Korea' },
-    { code: '+850', label: '🇰🇵 North Korea' },
-    { code: '+52', label: '🇲🇽 Mexico' },
-    { code: '+507', label: '🇵🇦 Panama' },
-    { code: '+51', label: '🇵🇪 Peru' },
-    { code: '+56', label: '🇨🇱 Chile' },
-    { code: '+54', label: '🇦🇷 Argentina' },
-    { code: '+55', label: '🇧🇷 Brazil' },
-    { code: '+591', label: '🇧🇴 Bolivia' },
-    { code: '+502', label: '🇬🇹 Guatemala' },
-    { code: '+503', label: '🇸🇻 El Salvador' },
-    { code: '+504', label: '🇭🇳 Honduras' },
-    { code: '+505', label: '🇳🇮 Nicaragua' },
-    { code: '+506', label: '🇨🇷 Costa Rica' },
-    { code: '+595', label: '🇵🇾 Paraguay' },
-    { code: '+598', label: '🇺🇾 Uruguay' },
-    { code: '+592', label: '🇬🇾 Guyana' },
-    { code: '+501', label: '🇧🇿 Belize' },
-    { code: '+503', label: '🇸🇻 El Salvador' },
-    { code: '+358', label: '🇫🇮 Finland' },
-    { code: '+47', label: '🇳🇴 Norway' },
-    // ... add more if needed
+    { code: '+1', label: 'United States', flag: 'https://flagcdn.com/us.svg' },
+    { code: '+1', label: 'Canada', flag: 'https://flagcdn.com/ca.svg' },
+    { code: '+44', label: 'United Kingdom', flag: 'https://flagcdn.com/gb.svg' },
+    { code: '+91', label: 'India', flag: 'https://flagcdn.com/in.svg' },
+    { code: '+61', label: 'Australia', flag: 'https://flagcdn.com/au.svg' },
+    { code: '+966', label: 'Saudi Arabia', flag: 'https://flagcdn.com/sa.svg' },
+    { code: '+971', label: 'UAE', flag: 'https://flagcdn.com/ae.svg' },
+    { code: '+92', label: 'Pakistan', flag: 'https://flagcdn.com/pk.svg' },
+    { code: '+880', label: 'Bangladesh', flag: 'https://flagcdn.com/bd.svg' },
+    { code: '+81', label: 'Japan', flag: 'https://flagcdn.com/jp.svg' },
+    { code: '+82', label: 'South Korea', flag: 'https://flagcdn.com/kr.svg' },
+    { code: '+86', label: 'China', flag: 'https://flagcdn.com/cn.svg' },
+    { code: '+49', label: 'Germany', flag: 'https://flagcdn.com/de.svg' },
+    { code: '+33', label: 'France', flag: 'https://flagcdn.com/fr.svg' },
+    { code: '+39', label: 'Italy', flag: 'https://flagcdn.com/it.svg' },
+    { code: '+34', label: 'Spain', flag: 'https://flagcdn.com/es.svg' },
+    { code: '+7', label: 'Russia', flag: 'https://flagcdn.com/ru.svg' },
+    { code: '+27', label: 'South Africa', flag: 'https://flagcdn.com/za.svg' },
+    { code: '+46', label: 'Sweden', flag: 'https://flagcdn.com/se.svg' },
+    { code: '+41', label: 'Switzerland', flag: 'https://flagcdn.com/ch.svg' },
+    { code: '+31', label: 'Netherlands', flag: 'https://flagcdn.com/nl.svg' },
+    { code: '+64', label: 'New Zealand', flag: 'https://flagcdn.com/nz.svg' },
+    { code: '+65', label: 'Singapore', flag: 'https://flagcdn.com/sg.svg' },
+    { code: '+66', label: 'Thailand', flag: 'https://flagcdn.com/th.svg' },
+    { code: '+60', label: 'Malaysia', flag: 'https://flagcdn.com/my.svg' },
+    { code: '+63', label: 'Philippines', flag: 'https://flagcdn.com/ph.svg' },
+    { code: '+351', label: 'Portugal', flag: 'https://flagcdn.com/pt.svg' },
+    { code: '+48', label: 'Poland', flag: 'https://flagcdn.com/pl.svg' },
+    { code: '+43', label: 'Austria', flag: 'https://flagcdn.com/at.svg' },
+    { code: '+352', label: 'Luxembourg', flag: 'https://flagcdn.com/lu.svg' },
+    { code: '+354', label: 'Iceland', flag: 'https://flagcdn.com/is.svg' },
+    { code: '+358', label: 'Finland', flag: 'https://flagcdn.com/fi.svg' },
+    { code: '+47', label: 'Norway', flag: 'https://flagcdn.com/no.svg' },
+    { code: '+90', label: 'Turkey', flag: 'https://flagcdn.com/tr.svg' },
+    { code: '+886', label: 'Taiwan', flag: 'https://flagcdn.com/tw.svg' },
+    { code: '+972', label: 'Israel', flag: 'https://flagcdn.com/il.svg' },
   ];
   
-    
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const getCountry = (code: string) => countryCodes.find(c => c.code === code);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-  
+
     const fullPhoneNumber = `${formData.countryCode}${formData.phone}`;
     console.log('Phone:', fullPhoneNumber);
-  
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
+
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
     toast({
       title: t.contact.messageSent,
       description: t.contact.messageSuccess,
     });
-    
+
     setFormData({
       countryCode: '+966',
       name: '',
@@ -128,6 +104,7 @@ const Contact = () => {
       subject: '',
       message: '',
       package: '',
+      travelMonth: '', // ✅ ADD THIS
     });
     
     setIsSubmitting(false);
@@ -139,8 +116,6 @@ const Contact = () => {
     { id: 'email', icon: Mail, title: t.contact.email, value: 'info@jannattravelsandtours.com', link: 'mailto:info@jannattravelsandtours.com' },
     { id: 'hours', icon: Clock, title: t.contact.workingHours, value: t.contact.workingHoursValue },
   ];
-  
-  
 
   const packages = [
     t.contact.packageHajj,
@@ -157,65 +132,28 @@ const Contact = () => {
       <Navbar />
 
       {/* Hero Section */}
-      {/* <section className="relative h-[40vh] min-h-[350px] overflow-hidden">
-  <img 
-    src={madinahImage} 
-    alt="Contact Us" 
-    className="w-full h-full object-cover" 
-  />
-  
-  <div className="absolute inset-0 hero-overlay" />
-
-  <div className="relative z-50 h-full flex items-center justify-center text-center px-4 md:px-8">
-    <motion.div
-      initial={{ opacity: 1, y: 0 }}       // force visible
-      animate={{ opacity: 1, y: 0 }}       // force visible
-      transition={{ duration: 0 }}          // no delay
-      style={{ opacity: 1 }}               // inline style ensures visibility
-    >
-      <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold text-sm font-medium mb-6 drop-shadow-lg">
-        Get in Touch
-      </span>
-      <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl">
-        Contact Us
-      </h1>
-      <p className="text-white/90 mt-4 text-lg md:text-xl drop-shadow-lg max-w-2xl mx-auto">
-        Reach out for your Hajj, Umrah, Ziyarat, or other travel inquiries. We’re here to guide you every step of the way.
-      </p>
-    </motion.div>
-  </div>
-</section> */}
-
-<section className="relative z-0 h-[60vh] min-h-[500px] overflow-hidden">
-  <img
-    src={madinahImage}
-    alt="Contact Us"
-    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-  />
-
-  {/* Blue Gradient Overlay */}
-  <div className="absolute inset-0 hero-overlay pointer-events-none" />
-
-  {/* Content */}
-  <div className="relative z-10 flex h-full items-center justify-center text-center px-4 md:px-8">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl">
-        {t.contact.heroTitle}
-      </h1>
-      <p className="text-white/90 mt-4 text-lg md:text-xl drop-shadow-lg max-w-2xl mx-auto">
-        {t.contact.conversationDesc}
-      </p>
-    </motion.div>
-  </div>
-</section>
-
-
-
-
+      <section className="relative z-0 h-[60vh] min-h-[500px] overflow-hidden">
+        <img
+          src={madinahImage}
+          alt="Contact Us"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        />
+        <div className="absolute inset-0 hero-overlay pointer-events-none" />
+        <div className="relative z-10 flex h-full items-center justify-center text-center px-4 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-2xl">
+              {t.contact.heroTitle}
+            </h1>
+            <p className="text-white/90 mt-4 text-lg md:text-xl drop-shadow-lg max-w-2xl mx-auto">
+              {t.contact.conversationDesc}
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section className="section-padding">
@@ -227,72 +165,58 @@ const Contact = () => {
                 <h2 className="font-display text-2xl font-bold text-foreground mb-4">
                   {t.contact.conversationTitle}
                 </h2>
-                <p className="text-muted-foreground">
-                  {t.contact.conversationDesc}
-                </p>
+                <p className="text-muted-foreground">{t.contact.conversationDesc}</p>
               </div>
 
               <div className="space-y-6">
-              {contactInfo.map((info) => (
-  <div key={info.id}>
+                {contactInfo.map((info) => (
+                  <div key={info.id}>
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      className="flex gap-4"
+                    >
+                      <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0">
+                        <info.icon className="w-6 h-6 text-primary-foreground" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-foreground">{info.title}</h3>
+                        {info.link ? (
+                          <a
+                            href={info.link}
+                            className="text-muted-foreground hover:text-secondary transition-colors"
+                          >
+                            {info.value}
+                          </a>
+                        ) : (
+                          <p className="text-muted-foreground">{info.value}</p>
+                        )}
+                      </div>
+                    </motion.div>
 
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      className="flex gap-4"
-    >
-      {/* Icon */}
-      <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0">
-        <info.icon className="w-6 h-6 text-primary-foreground" />
-      </div>
+                    {info.title === t.contact.workingHours && (
+                      <div className="mt-4 space-y-2">
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <MapPin className="w-3 h-3" />
+                          3570 Abu Ayyub Al Ansaari, Al Marqab, Riyadh, 12646
+                        </div>
+                        <div className="w-full h-44 rounded-xl overflow-hidden border border-border">
+                          <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3626.5471592765616!2d46.72802347536378!3d24.639287878074384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDM4JzIxLjQiTiA0NsKwNDMnNTAuMiJF!5e0!3m2!1sen!2sin!4v1766674901331!5m2!1sen!2sin"
+                            className="w-full h-full"
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
 
-      {/* Text */}
-      <div>
-        <h3 className="font-semibold text-foreground">{info.title}</h3>
-
-        {info.link ? (
-          <a
-            href={info.link}
-            className="text-muted-foreground hover:text-secondary transition-colors"
-          >
-            {info.value}
-          </a>
-        ) : (
-          <p className="text-muted-foreground">{info.value}</p>
-        )}
-      </div>
-    </motion.div>
-
-    {/* ✅ MAP OUTSIDE FLEX — FULL WIDTH */}
-    {info.title === t.contact.workingHours && (
-      <div className="mt-4 space-y-2">
-        {/* Address */}
-        <div className="flex items-center gap-1 text-xs text-muted-foreground">
-          <MapPin className="w-3 h-3" />
-          3570 Abu Ayyub Al Ansaari, Al Marqab, Riyadh, 12646
-        </div>
-
-        {/* Map */}
-        <div className="w-full h-44 rounded-xl overflow-hidden border border-border">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3626.5471592765616!2d46.72802347536378!3d24.639287878074384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDM4JzIxLjQiTiA0NsKwNDMnNTAuMiJF!5e0!3m2!1sen!2sin!4v1766674901331!5m2!1sen!2sin"
-            className="w-full h-full"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-      </div>
-    )}
-  </div>
-))}
-
-</div>
-
-
-              {/* WhatsApp CTA */}
               <motion.a
-                href="https://wa.me/+966546812673 "
+                href="https://wa.me/+966546812673"
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
@@ -324,6 +248,7 @@ const Contact = () => {
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Name */}
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
                       {t.contact.fullName} *
@@ -338,6 +263,7 @@ const Contact = () => {
                     />
                   </div>
 
+                  {/* Email */}
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
                       {t.contact.emailAddress} *
@@ -352,65 +278,124 @@ const Contact = () => {
                     />
                   </div>
 
-                  <div>
+                  {/* Phone */}
+                  {/* Phone */}
+{/* Phone */}
+{/* Phone */}
+<div className="md:col-span-2">
   <label className="block text-sm font-medium text-foreground mb-2">
     {t.contact.phoneNumber}
   </label>
 
-  <div className="flex flex-col sm:flex-row gap-2">
-    {/* Country Code */}
-    <select
-      value={formData.countryCode}
-      onChange={(e) =>
-        setFormData({ ...formData, countryCode: e.target.value })
-      }
-      className="w-full sm:w-[120px] px-2 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all font-mono"
-    >
-      {countryCodes
-        .sort((a, b) => Number(a.code.replace('+', '')) - Number(b.code.replace('+', '')))
-        .map((c) => {
-          const codeNumber = c.code.replace('+', '').padEnd(5, ' ');
-          return (
-            <option key={c.code + c.label} value={c.code}>
-              {codeNumber} {c.label}
-            </option>
-          );
-        })}
-    </select>
+  <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-3">
 
-    {/* Phone Number */}
+    {/* Country code dropdown */}
+    <div ref={dropdownRef} className="relative w-full sm:w-[200px] min-w-0">
+
+      <button
+        type="button"
+        onClick={() => setDropdownOpen(!dropdownOpen)}
+        className="w-full h-12 px-3 rounded-xl border border-border bg-background flex items-center justify-between focus:ring-2 focus:ring-secondary outline-none transition-all text-left"
+      >
+        <div className="flex items-center gap-2 min-w-0 w-full">
+          <img
+            src={getCountry(formData.countryCode)?.flag}
+            alt={formData.countryCode}
+            className="w-5 h-5 object-cover"
+          />
+          <span className="text-sm font-medium flex-1 truncate">
+            {getCountry(formData.countryCode)?.label}
+          </span>
+          <span className="text-sm font-semibold">{formData.countryCode}</span>
+        </div>
+        <span className="text-lg ml-2">▾</span>
+      </button>
+
+      {dropdownOpen && (
+        <ul className="absolute z-50 mt-1 max-h-64 w-full overflow-y-auto rounded-xl border border-border bg-background shadow-lg">
+          {countryCodes
+            .sort((a, b) => Number(a.code.replace('+', '')) - Number(b.code.replace('+', '')))
+            .map((c) => (
+              <li
+                key={c.code + c.label}
+                className="px-3 py-2 hover:bg-secondary/10 cursor-pointer flex items-center gap-2 transition-colors"
+                onClick={() => {
+                  setFormData({ ...formData, countryCode: c.code });
+                  setDropdownOpen(false);
+                }}
+              >
+                <img src={c.flag} alt={c.label} className="w-6 h-4 object-cover" />
+                <span className="flex-1 text-sm truncate">{c.label}</span>
+                <span className="text-sm font-semibold">{c.code}</span>
+              </li>
+            ))}
+        </ul>
+      )}
+    </div>
+
+    {/* Phone Input */}
     <input
-      type="text"
+      type="tel"   inputMode="numeric"
       value={formData.phone}
       onChange={(e) => {
         const onlyNumbers = e.target.value.replace(/\D/g, '');
         setFormData({ ...formData, phone: onlyNumbers });
       }}
-      className="flex-1 px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+      className="flex-1 h-12 px-4 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
       placeholder={t.contact.phonePlaceholder}
     />
   </div>
 </div>
 
+{/* Package */}
+<div>
+  <label className="block text-sm font-medium text-foreground mb-2">
+    {t.contact.interestedPackage}
+  </label>
+  <select
+    value={formData.package}
+    onChange={(e) => setFormData({ ...formData, package: e.target.value })}
+    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+  >
+    <option value="">{t.common.selectPackage}</option>
+    {packages.map((pkg) => (
+      <option key={pkg} value={pkg}>{pkg}</option>
+    ))}
+  </select>
+</div>
+{/* Preferred Month of Travel */}
+{/* Preferred Month of Travel */}
+<div>
+  <label className="block text-sm font-medium text-foreground mb-2">
+    {t.contact.preferredMonth}
+  </label>
+
+  <select
+    value={formData.travelMonth}
+    onChange={(e) =>
+      setFormData({ ...formData, travelMonth: e.target.value })
+    }
+    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+  >
+    <option value="">{t.contact.selectMonth}</option>
+    <option value="January">{t.months.january}</option>
+    <option value="February">{t.months.february}</option>
+    <option value="March">{t.months.march}</option>
+    <option value="April">{t.months.april}</option>
+    <option value="May">{t.months.may}</option>
+    <option value="June">{t.months.june}</option>
+    <option value="July">{t.months.july}</option>
+    <option value="August">{t.months.august}</option>
+    <option value="September">{t.months.september}</option>
+    <option value="October">{t.months.october}</option>
+    <option value="November">{t.months.november}</option>
+    <option value="December">{t.months.december}</option>
+  </select>
+</div>
 
 
 
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      {t.contact.interestedPackage}
-                    </label>
-                    <select
-                      value={formData.package}
-                      onChange={(e) => setFormData({ ...formData, package: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
-                    >
-                      <option value="">{t.common.selectPackage}</option>
-                      {packages.map((pkg) => (
-                        <option key={pkg} value={pkg}>{pkg}</option>
-                      ))}
-                    </select>
-                  </div>
-
+                  {/* Subject */}
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-foreground mb-2">
                       {t.contact.subject} *
@@ -425,6 +410,7 @@ const Contact = () => {
                     />
                   </div>
 
+                  {/* Message */}
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-foreground mb-2">
                       {t.contact.message} *
@@ -443,14 +429,11 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="mt-6 btn-primary w-full md:w-auto disabled:opacity-50"
+                  className="mt-6 btn-primary w-full md:w-auto disabled:opacity-50 flex items-center justify-center gap-2"
                 >
-                  {isSubmitting ? (
-                    t.common.sending
-                  ) : (
+                  {isSubmitting ? t.common.sending : (
                     <>
-                      {t.common.sendMessage}
-                      <Send className="w-5 h-5" />
+                      {t.common.sendMessage} <Send className="w-5 h-5" />
                     </>
                   )}
                 </button>
@@ -459,7 +442,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
 
       <Footer />
       <WhatsAppButton />

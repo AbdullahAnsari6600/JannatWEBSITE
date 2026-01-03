@@ -272,6 +272,8 @@
     "featureSpecialArrangements": "ترتيبات خاصة"
   },
   "contact": {
+    "preferredMonth": "الشهر المفضل للسفر",
+"selectMonth": "اختر الشهر",
     "badge": "تواصل معنا",
     "heroTitle": "اتصل بنا",
     "formTitle": "أرسل لنا رسالة",
@@ -304,6 +306,20 @@
     "packageInternational": "جولة دولية",
     "packageCustom": "باقة مخصصة",
     "packageOther": "استفسار آخر"
+  },
+  "months": {
+    "january": "يناير",
+    "february": "فبراير",
+    "march": "مارس",
+    "april": "أبريل",
+    "may": "مايو",
+    "june": "يونيو",
+    "july": "يوليو",
+    "august": "أغسطس",
+    "september": "سبتمبر",
+    "october": "أكتوبر",
+    "november": "نوفمبر",
+    "december": "ديسمبر"
   },
   "gallery": {
     "badge": "معرضنا",

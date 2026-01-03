@@ -272,6 +272,8 @@
     "featureSpecialArrangements": "Special arrangements"
   },
   "contact": {
+    "preferredMonth":"Preferred Month of Travel",
+"selectMonth": "Select Month",
     "badge": "Get in Touch",
     "heroTitle": "Contact Us",
     "formTitle": "Send us a Message",
@@ -328,6 +330,20 @@
     "faqTitle": "Frequently Asked Questions",
     "faqSubtitle": "Everything you need to know about Umrah, Hajj & Saudi tours"
   },
+  "months": {
+  "january": "January",
+  "february": "February",
+  "march": "March",
+  "april": "April",
+  "may": "May",
+  "june": "June",
+  "july": "July",
+  "august": "August",
+  "september": "September",
+  "october": "October",
+  "november": "November",
+  "december": "December"
+},
   "hajjPage": {
     "badge": "Hajj 2025",
     "heroTitle": "Hajj Packages",
