@@ -159,10 +159,12 @@
     "bookHajj": "Book Your Hajj Package"
   },
   "footer": {
+    "companyName": "JANNAT",
+    "companyTagline": "TRAVEL & TOURISM",
     "companyDesc": "Your trusted partner for Hajj, Umrah, Ziyarat, and international travel experiences. Based in Saudi Arabia, serving pilgrims worldwide.",
     "quickLinks": "Quick Links",
     "ourServices": "Our Services",
-    "contactUs": "Contact Us",
+    "contactUs": "Quick Connect",
     "visaAssistance": "Visa Assistance",
     "hotelBooking": "Hotel Booking",
     "flightBooking": "Flight Booking",
@@ -287,7 +289,7 @@
     "emailAddress": "Email Address",
     "emailPlaceholder": "your@email.com",
     "phoneNumber": "Phone Number",
-    "phonePlaceholder": "+966 XX XXX XXXX",
+    "phonePlaceholder": "XX XXX XXXX",
     "interestedPackage": "Interested Package",
     "subject": "Subject",
     "subjectPlaceholder": "How can we help you?",

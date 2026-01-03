@@ -17,6 +17,7 @@ const Contact = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
+    countryCode: '+966',
     name: '',
     email: '',
     phone: '',
@@ -24,11 +25,24 @@ const Contact = () => {
     message: '',
     package: '',
   });
+  const countryCodes = [
+    { code: '+966', label: '🇸🇦 Saudi Arabia' },
+    { code: '+91', label: '🇮🇳 India' },
+    { code: '+971', label: '🇦🇪 UAE' },
+    { code: '+92', label: '🇵🇰 Pakistan' },
+    { code: '+880', label: '🇧🇩 Bangladesh' },
+    { code: '+44', label: '🇬🇧 UK' },
+  ];
+    
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+  
+    const fullPhoneNumber = `${formData.countryCode}${formData.phone}`;
+    console.log('Phone:', fullPhoneNumber);
+  
     
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -38,7 +52,16 @@ const Contact = () => {
       description: t.contact.messageSuccess,
     });
     
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '', package: '' });
+    setFormData({
+      countryCode: '+966',
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+      package: '',
+    });
+    
     setIsSubmitting(false);
   };
 
@@ -179,7 +202,7 @@ const Contact = () => {
         {/* Address */}
         <div className="flex items-center gap-1 text-xs text-muted-foreground">
           <MapPin className="w-3 h-3" />
-          King Fahd Road, Al Olaya, Riyadh
+          3570 Abu Ayyub Al Ansaari, Al Marqab, Riyadh, 12646
         </div>
 
         {/* Map */}
@@ -265,18 +288,38 @@ const Contact = () => {
   <label className="block text-sm font-medium text-foreground mb-2">
     {t.contact.phoneNumber}
   </label>
-  <input
-    type="text"
-    value={formData.phone}
-    onChange={(e) => {
-      // Allow only digits
-      const onlyNumbers = e.target.value.replace(/\D/g, '');
-      setFormData({ ...formData, phone: onlyNumbers });
-    }}
-    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
-    placeholder={t.contact.phonePlaceholder}
-  />
+
+  <div className="flex gap-2">
+    {/* Country Code */}
+    <select
+  value={formData.countryCode}
+  onChange={(e) =>
+    setFormData({ ...formData, countryCode: e.target.value })
+  }
+  className="w-[110px] px-2 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+>
+  {countryCodes.map((c) => (
+    <option key={c.code} value={c.code}>
+      {c.code}
+    </option>
+  ))}
+</select>
+
+
+    {/* Phone Number */}
+    <input
+      type="text"
+      value={formData.phone}
+      onChange={(e) => {
+        const onlyNumbers = e.target.value.replace(/\D/g, '');
+        setFormData({ ...formData, phone: onlyNumbers });
+      }}
+      className="flex-1 px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+      placeholder={t.contact.phonePlaceholder}
+    />
+  </div>
 </div>
+
 
 
                   <div>
