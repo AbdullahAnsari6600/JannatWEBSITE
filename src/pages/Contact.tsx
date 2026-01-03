@@ -26,13 +26,81 @@ const Contact = () => {
     package: '',
   });
   const countryCodes = [
-    { code: '+966', label: '🇸🇦 Saudi Arabia' },
+    { code: '+1', label: '🇺🇸 United States' },
+    { code: '+1', label: '🇨🇦 Canada' },
+    { code: '+44', label: '🇬🇧 United Kingdom' },
     { code: '+91', label: '🇮🇳 India' },
+    { code: '+61', label: '🇦🇺 Australia' },
+    { code: '+49', label: '🇩🇪 Germany' },
+    { code: '+33', label: '🇫🇷 France' },
+    { code: '+39', label: '🇮🇹 Italy' },
+    { code: '+81', label: '🇯🇵 Japan' },
+    { code: '+86', label: '🇨🇳 China' },
+    { code: '+7', label: '🇷🇺 Russia' },
+    { code: '+966', label: '🇸🇦 Saudi Arabia' },
     { code: '+971', label: '🇦🇪 UAE' },
     { code: '+92', label: '🇵🇰 Pakistan' },
     { code: '+880', label: '🇧🇩 Bangladesh' },
-    { code: '+44', label: '🇬🇧 UK' },
+    { code: '+27', label: '🇿🇦 South Africa' },
+    { code: '+34', label: '🇪🇸 Spain' },
+    { code: '+46', label: '🇸🇪 Sweden' },
+    { code: '+47', label: '🇳🇴 Norway' },
+    { code: '+31', label: '🇳🇱 Netherlands' },
+    { code: '+48', label: '🇵🇱 Poland' },
+    { code: '+41', label: '🇨🇭 Switzerland' },
+    { code: '+420', label: '🇨🇿 Czech Republic' },
+    { code: '+43', label: '🇦🇹 Austria' },
+    { code: '+351', label: '🇵🇹 Portugal' },
+    { code: '+353', label: '🇮🇪 Ireland' },
+    { code: '+358', label: '🇫🇮 Finland' },
+    { code: '+64', label: '🇳🇿 New Zealand' },
+    { code: '+60', label: '🇲🇾 Malaysia' },
+    { code: '+65', label: '🇸🇬 Singapore' },
+    { code: '+62', label: '🇮🇩 Indonesia' },
+    { code: '+66', label: '🇹🇭 Thailand' },
+    { code: '+95', label: '🇲🇲 Myanmar' },
+    { code: '+84', label: '🇻🇳 Vietnam' },
+    { code: '+63', label: '🇵🇭 Philippines' },
+    { code: '+234', label: '🇳🇬 Nigeria' },
+    { code: '+254', label: '🇰🇪 Kenya' },
+    { code: '+20', label: '🇪🇬 Egypt' },
+    { code: '+211', label: '🇸🇸 South Sudan' },
+    { code: '+212', label: '🇲🇦 Morocco' },
+    { code: '+974', label: '🇶🇦 Qatar' },
+    { code: '+965', label: '🇰🇼 Kuwait' },
+    { code: '+968', label: '🇴🇲 Oman' },
+    { code: '+973', label: '🇧🇭 Bahrain' },
+    { code: '+998', label: '🇺🇿 Uzbekistan' },
+    { code: '+992', label: '🇹🇯 Tajikistan' },
+    { code: '+993', label: '🇹🇲 Turkmenistan' },
+    { code: '+995', label: '🇬🇪 Georgia' },
+    { code: '+996', label: '🇰🇬 Kyrgyzstan' },
+    { code: '+880', label: '🇧🇩 Bangladesh' },
+    { code: '+886', label: '🇹🇼 Taiwan' },
+    { code: '+82', label: '🇰🇷 South Korea' },
+    { code: '+850', label: '🇰🇵 North Korea' },
+    { code: '+52', label: '🇲🇽 Mexico' },
+    { code: '+507', label: '🇵🇦 Panama' },
+    { code: '+51', label: '🇵🇪 Peru' },
+    { code: '+56', label: '🇨🇱 Chile' },
+    { code: '+54', label: '🇦🇷 Argentina' },
+    { code: '+55', label: '🇧🇷 Brazil' },
+    { code: '+591', label: '🇧🇴 Bolivia' },
+    { code: '+502', label: '🇬🇹 Guatemala' },
+    { code: '+503', label: '🇸🇻 El Salvador' },
+    { code: '+504', label: '🇭🇳 Honduras' },
+    { code: '+505', label: '🇳🇮 Nicaragua' },
+    { code: '+506', label: '🇨🇷 Costa Rica' },
+    { code: '+595', label: '🇵🇾 Paraguay' },
+    { code: '+598', label: '🇺🇾 Uruguay' },
+    { code: '+592', label: '🇬🇾 Guyana' },
+    { code: '+501', label: '🇧🇿 Belize' },
+    { code: '+503', label: '🇸🇻 El Salvador' },
+    { code: '+358', label: '🇫🇮 Finland' },
+    { code: '+47', label: '🇳🇴 Norway' },
+    // ... add more if needed
   ];
+  
     
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -289,22 +357,26 @@ const Contact = () => {
     {t.contact.phoneNumber}
   </label>
 
-  <div className="flex gap-2">
+  <div className="flex flex-col sm:flex-row gap-2">
     {/* Country Code */}
     <select
-  value={formData.countryCode}
-  onChange={(e) =>
-    setFormData({ ...formData, countryCode: e.target.value })
-  }
-  className="w-[110px] px-2 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
->
-  {countryCodes.map((c) => (
-    <option key={c.code} value={c.code}>
-      {c.code}
-    </option>
-  ))}
-</select>
-
+      value={formData.countryCode}
+      onChange={(e) =>
+        setFormData({ ...formData, countryCode: e.target.value })
+      }
+      className="w-full sm:w-[120px] px-2 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all font-mono"
+    >
+      {countryCodes
+        .sort((a, b) => Number(a.code.replace('+', '')) - Number(b.code.replace('+', '')))
+        .map((c) => {
+          const codeNumber = c.code.replace('+', '').padEnd(5, ' ');
+          return (
+            <option key={c.code + c.label} value={c.code}>
+              {codeNumber} {c.label}
+            </option>
+          );
+        })}
+    </select>
 
     {/* Phone Number */}
     <input
@@ -319,6 +391,7 @@ const Contact = () => {
     />
   </div>
 </div>
+
 
 
 
