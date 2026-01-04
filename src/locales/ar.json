@@ -291,7 +291,7 @@
     "emailAddress": "البريد الإلكتروني",
     "emailPlaceholder": "بريدك@email.com",
     "phoneNumber": "رقم الهاتف",
-    "phonePlaceholder": "+966 XX XXX XXXX",
+    "phonePlaceholder": "XX XXX XXXX",
     "interestedPackage": "الباقة المهتم بها",
     "subject": "الموضوع",
     "subjectPlaceholder": "كيف يمكننا مساعدتك؟",
@@ -340,6 +340,8 @@
     "internationalTours": "جولات دولية",
     "riyadhCityscape": "منظر مدينة الرياض",
     "mountUhud": "جبل أحد",
+    "abhaFamilyTrips": "رحلات أبها العائلية",
+    "taifCityOfMountains": "الطائف - مدينة الجبال",
     "faqBadge": "الأسئلة الشائعة",
     "faqTitle": "الأسئلة المتكررة",
     "faqSubtitle": "كل ما تحتاج معرفته عن العمرة والحج والجولات السعودية"
