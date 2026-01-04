@@ -408,7 +408,175 @@
     "filterZiyarat": "الزيارة",
     "filterLocal": "جولات محلية",
     "filterInternational": "دولية",
-    "noPackages": "لم يتم العثور على باقات تطابق معاييرك."
+    "noPackages": "لم يتم العثور على باقات تطابق معاييرك.",
+    "close": "إغلاق",
+    "faqs": "الأسئلة الشائعة",
+    "questionLabel": "س:",
+    "answerLabel": "ج:",
+    "packageDescription": "استمتع برحلة مُعدة بعناية مصممة للراحة والإثراء الروحي وراحة البال.",
+    "packageTitles": {
+      "premiumHajj2026": "باقة الحج المميزة 2026",
+      "economyHajj": "باقة الحج الاقتصادية",
+      "vipHajj": "تجربة الحج VIP",
+      "umrahRamadan": "عمرة رمضان الخاصة",
+      "familyUmrah": "باقة العمرة العائلية",
+      "premiumUmrah": "تجربة العمرة المميزة",
+      "completeZiyarat": "جولة الزيارة الكاملة",
+      "madinahZiyarat": "زيارة المدينة الخاصة",
+      "discoverSaudi": "اكتشف المملكة العربية السعودية",
+      "alUlaHeritage": "تجربة تراث العلا",
+      "riyadhExplorer": "مستكشف مدينة الرياض",
+      "abhaSaudi": "أبها، المملكة العربية السعودية",
+      "baliBeach": "جنة بالي الشاطئية",
+      "thailandExplorer": "مستكشف تايلاند",
+      "switzerlandScenic": "جولة سويسرا الخلابة",
+      "capeTownAdventure": "مغامرة كيب تاون",
+      "parisRomantic": "هروب باريس الرومانسي",
+      "maldivesLuxury": "ملاذ المالديف الفاخر",
+      "dubaiDesert": "مغامرة دبي الصحراوية",
+      "japanCherry": "جولة أزهار الكرز اليابانية",
+      "egyptHistorical": "رحلة مصر التاريخية"
+    },
+    "packageLocations": {
+      "makkahMadinah": "مكة والمدينة",
+      "holySites": "المواقع المقدسة",
+      "madinah": "المدينة",
+      "multipleCities": "مدن متعددة",
+      "alUla": "العلا",
+      "riyadh": "الرياض",
+      "abha": "أبها",
+      "baliIndonesia": "بالي، إندونيسيا",
+      "bangkokPhuket": "بانكوك وبوكيت",
+      "zurichLucerne": "زيورخ، لوسيرن، إنترلاكن",
+      "capeTown": "كيب تاون، جنوب أفريقيا",
+      "parisFrance": "باريس، فرنسا",
+      "maldives": "المالديف",
+      "dubaiUAE": "دبي، الإمارات العربية المتحدة",
+      "tokyoKyoto": "طوكيو وكيوتو، اليابان",
+      "cairoLuxor": "القاهرة والأقصر، مصر"
+    },
+    "packageDurations": {
+      "6d5n": "6 أيام / 5 ليالٍ",
+      "4d3n": "4 أيام / 3 ليالٍ",
+      "8d7n": "8 أيام / 7 ليالٍ",
+      "14d13n": "14 يوم / 13 ليلة",
+      "9d8n": "9 أيام / 8 ليالٍ",
+      "12d11n": "12 يوم / 11 ليلة",
+      "2d1n": "يومان / ليلة واحدة",
+      "1d": "يوم واحد",
+      "10d9n": "10 أيام / 9 ليالٍ",
+      "3d2n": "3 أيام / ليلتان",
+      "7d6n": "7 أيام / 6 ليالٍ",
+      "5d4n": "5 أيام / 4 ليالٍ"
+    },
+    "packageFAQs": {
+      "transportationIncluded": {
+        "q": "هل النقل مشمول؟",
+        "a": "نعم، النقل مشمول."
+      },
+      "flightsIncluded": {
+        "q": "هل الرحلات الجوية مشمولة؟",
+        "a": "نعم، رحلات اقتصادية مشمولة."
+      },
+      "vipServiceIncluded": {
+        "q": "هل الخدمة VIP مشمولة؟",
+        "a": "نعم، الخدمة VIP مشمولة."
+      },
+      "provideGuidance": {
+        "q": "هل تقدمون الإرشاد؟",
+        "a": "نعم، جولات العمرة المرشدة مشمولة."
+      },
+      "suitableForChildren": {
+        "q": "مناسبة للأطفال؟",
+        "a": "نعم، مناسبة للعائلات."
+      },
+      "luxuryAccommodation": {
+        "q": "إقامة فاخرة؟",
+        "a": "نعم، فنادق مميزة."
+      },
+      "guidedTour": {
+        "q": "جولة مرشدة؟",
+        "a": "نعم، مرشدة."
+      },
+      "localGuideIncluded": {
+        "q": "مرشد محلي مشمول؟",
+        "a": "نعم"
+      },
+      "coverRiyadh": {
+        "q": "هل نغطي الرياض؟",
+        "a": "نعم"
+      },
+      "includesGuidedTours": {
+        "q": "هل تشمل جولات مرشدة؟",
+        "a": "نعم"
+      },
+      "citySightseeing": {
+        "q": "مشاهدة معالم المدينة؟",
+        "a": "نعم"
+      },
+      "internationalTrips": {
+        "q": "رحلات دولية؟",
+        "a": "لا"
+      },
+      "returnFlightsIncluded": {
+        "q": "هل الرحلات الجوية مشمولة؟",
+        "a": "نعم، رحلات ذهاب وإياب مشمولة."
+      },
+      "visaRequired": {
+        "q": "هل التأشيرة مطلوبة؟",
+        "a": "نعم، يتم تقديم المساعدة."
+      },
+      "trainRidesIncluded": {
+        "q": "هل تشمل ركوب القطار؟",
+        "a": "نعم، رحلات قطار خلابة مشمولة."
+      },
+      "safarisIncluded": {
+        "q": "هل رحلات السفاري مشمولة؟",
+        "a": "نعم، جولة سفاري مشمولة."
+      },
+      "eiffelTowerVisit": {
+        "q": "هل تشمل زيارة برج إيفل؟",
+        "a": "نعم"
+      },
+      "privateVillasIncluded": {
+        "q": "هل الفيلات الخاصة مشمولة؟",
+        "a": "نعم"
+      },
+      "desertSafariIncluded": {
+        "q": "هل تشمل سفاري الصحراء؟",
+        "a": "نعم"
+      },
+      "pyramidsTour": {
+        "q": "هل تشمل جولة الأهرامات؟",
+        "a": "نعم"
+      }
+    },
+    "packageInclusions": {
+      "premiumHotels": "فنادق مميزة",
+      "transportation": "المواصلات",
+      "visaAssistance": "مساعدة التأشيرة",
+      "support24_7": "دعم على مدار الساعة",
+      "standardHotels": "فنادق قياسية",
+      "support": "الدعم",
+      "luxuryHotels": "فنادق فاخرة",
+      "privateTransport": "نقل خاص",
+      "hotels": "فنادق",
+      "guide": "مرشد",
+      "beachResort": "منتجع شاطئي",
+      "breakfast": "الإفطار",
+      "guidedTours": "جولات مرشدة",
+      "airportTransfer": "نقل من المطار",
+      "cityTours": "جولات المدينة",
+      "islandHopping": "القفز بين الجزر",
+      "mountainExcursions": "رحلات جبلية",
+      "safari": "سفاري",
+      "seineRiverCruise": "رحلة نهر السين",
+      "overwaterVillas": "فيلات فوق الماء",
+      "snorkeling": "الغوص",
+      "desertSafari": "سفاري الصحراء",
+      "culturalExperiences": "تجارب ثقافية",
+      "transfers": "الانتقالات"
+    }
   },
   "packageTypes": {
     "hajj": "الحج",

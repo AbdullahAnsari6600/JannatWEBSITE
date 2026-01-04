@@ -408,7 +408,175 @@
     "filterZiyarat": "Ziyarat",
     "filterLocal": "Local Tours",
     "filterInternational": "International",
-    "noPackages": "No packages found matching your criteria."
+    "noPackages": "No packages found matching your criteria.",
+    "close": "Close",
+    "faqs": "FAQs",
+    "questionLabel": "Q:",
+    "answerLabel": "A:",
+    "packageDescription": "Experience a thoughtfully curated journey designed for comfort, spiritual fulfillment, and peace of mind.",
+    "packageTitles": {
+      "premiumHajj2026": "Premium Hajj Package 2026",
+      "economyHajj": "Economy Hajj Package",
+      "vipHajj": "VIP Hajj Experience",
+      "umrahRamadan": "Umrah Ramadan Special",
+      "familyUmrah": "Family Umrah Package",
+      "premiumUmrah": "Premium Umrah Experience",
+      "completeZiyarat": "Complete Ziyarat Tour",
+      "madinahZiyarat": "Madinah Ziyarat Special",
+      "discoverSaudi": "Discover Saudi Arabia",
+      "alUlaHeritage": "Al Ula Heritage Experience",
+      "riyadhExplorer": "Riyadh City Explorer",
+      "abhaSaudi": "Abha, Saudi Arabia",
+      "baliBeach": "Bali Beach Paradise",
+      "thailandExplorer": "Thailand Explorer",
+      "switzerlandScenic": "Switzerland Scenic Tour",
+      "capeTownAdventure": "Cape Town Adventure",
+      "parisRomantic": "Paris Romantic Escape",
+      "maldivesLuxury": "Maldives Luxury Retreat",
+      "dubaiDesert": "Dubai Desert Adventure",
+      "japanCherry": "Japan Cherry Blossom Tour",
+      "egyptHistorical": "Egypt Historical Expedition"
+    },
+    "packageLocations": {
+      "makkahMadinah": "Makkah & Madinah",
+      "holySites": "Holy Sites",
+      "madinah": "Madinah",
+      "multipleCities": "Multiple Cities",
+      "alUla": "Al Ula",
+      "riyadh": "Riyadh",
+      "abha": "Abha",
+      "baliIndonesia": "Bali, Indonesia",
+      "bangkokPhuket": "Bangkok & Phuket",
+      "zurichLucerne": "Zurich, Lucerne, Interlaken",
+      "capeTown": "Cape Town, South Africa",
+      "parisFrance": "Paris, France",
+      "maldives": "Maldives",
+      "dubaiUAE": "Dubai, UAE",
+      "tokyoKyoto": "Tokyo & Kyoto, Japan",
+      "cairoLuxor": "Cairo & Luxor, Egypt"
+    },
+    "packageDurations": {
+      "6d5n": "6 Days / 5 Nights",
+      "4d3n": "4 Days / 3 Nights",
+      "8d7n": "8 Days / 7 Nights",
+      "14d13n": "14 Days / 13 Nights",
+      "9d8n": "9 Days / 8 Nights",
+      "12d11n": "12 Days / 11 Nights",
+      "2d1n": "2 Days / 1 Night",
+      "1d": "1 Day",
+      "10d9n": "10 Days / 9 Nights",
+      "3d2n": "3 Days / 2 Nights",
+      "7d6n": "7 Days / 6 Nights",
+      "5d4n": "5 Days / 4 Nights"
+    },
+    "packageFAQs": {
+      "transportationIncluded": {
+        "q": "Is transportation included?",
+        "a": "Yes, transportation included."
+      },
+      "flightsIncluded": {
+        "q": "Are flights included?",
+        "a": "Yes, economy flights included."
+      },
+      "vipServiceIncluded": {
+        "q": "Is VIP service included?",
+        "a": "Yes, VIP service included."
+      },
+      "provideGuidance": {
+        "q": "Do you provide guidance?",
+        "a": "Yes, guided Umrah tours included."
+      },
+      "suitableForChildren": {
+        "q": "Suitable for children?",
+        "a": "Yes, family friendly."
+      },
+      "luxuryAccommodation": {
+        "q": "Luxury accommodation?",
+        "a": "Yes, premium hotels."
+      },
+      "guidedTour": {
+        "q": "Guided tour?",
+        "a": "Yes, guided."
+      },
+      "localGuideIncluded": {
+        "q": "Local guide included?",
+        "a": "Yes"
+      },
+      "coverRiyadh": {
+        "q": "Do we cover Riyadh?",
+        "a": "Yes"
+      },
+      "includesGuidedTours": {
+        "q": "Includes guided tours?",
+        "a": "Yes"
+      },
+      "citySightseeing": {
+        "q": "City sightseeing?",
+        "a": "Yes"
+      },
+      "internationalTrips": {
+        "q": "International trips?",
+        "a": "No"
+      },
+      "returnFlightsIncluded": {
+        "q": "Are flights included?",
+        "a": "Yes, return flights included."
+      },
+      "visaRequired": {
+        "q": "Visa required?",
+        "a": "Yes, assistance provided."
+      },
+      "trainRidesIncluded": {
+        "q": "Does it include train rides?",
+        "a": "Yes, scenic train rides included."
+      },
+      "safarisIncluded": {
+        "q": "Are safaris included?",
+        "a": "Yes, safari tour included."
+      },
+      "eiffelTowerVisit": {
+        "q": "Includes Eiffel Tower visit?",
+        "a": "Yes"
+      },
+      "privateVillasIncluded": {
+        "q": "Private villas included?",
+        "a": "Yes"
+      },
+      "desertSafariIncluded": {
+        "q": "Includes desert safari?",
+        "a": "Yes"
+      },
+      "pyramidsTour": {
+        "q": "Includes Pyramids tour?",
+        "a": "Yes"
+      }
+    },
+    "packageInclusions": {
+      "premiumHotels": "Premium Hotels",
+      "transportation": "Transportation",
+      "visaAssistance": "Visa Assistance",
+      "support24_7": "24/7 Support",
+      "standardHotels": "Standard Hotels",
+      "support": "Support",
+      "luxuryHotels": "Luxury Hotels",
+      "privateTransport": "Private Transport",
+      "hotels": "Hotels",
+      "guide": "Guide",
+      "beachResort": "Beach Resort",
+      "breakfast": "Breakfast",
+      "guidedTours": "Guided Tours",
+      "airportTransfer": "Airport Transfer",
+      "cityTours": "City Tours",
+      "islandHopping": "Island Hopping",
+      "mountainExcursions": "Mountain Excursions",
+      "safari": "Safari",
+      "seineRiverCruise": "Seine River Cruise",
+      "overwaterVillas": "Overwater Villas",
+      "snorkeling": "Snorkeling",
+      "desertSafari": "Desert Safari",
+      "culturalExperiences": "Cultural Experiences",
+      "transfers": "Transfers"
+    }
   },
   "packageTypes": {
     "hajj": "Hajj",

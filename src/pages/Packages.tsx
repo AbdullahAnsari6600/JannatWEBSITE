@@ -42,29 +42,47 @@ const Packages = () => {
     { id: 'holidays', label: t.packagesPage.filterInternational },
   ];
 
-  const allPackages = [
-    { image: heroImage, title: 'Premium Hajj Package 2026', location: 'Makkah & Madinah', duration: '6 Days / 5 Nights', rating: 4.9, type: 'hajj', faqs: [{q:'Is transportation included?',a:'Yes, transportation included.'}], inclusions:['Premium Hotels','Transportation','Visa Assistance','24/7 Support'] },
-    { image: madinahImage, title: 'Economy Hajj Package', location: 'Makkah & Madinah', duration: '4 Days / 3 Nights', rating: 4.7, type: 'hajj', faqs:[{q:'Are flights included?',a:'Yes, economy flights included.'}], inclusions:['Standard Hotels','Transportation','Visa Assistance','Support'] },
-    { image: luxuryHotel, title: 'VIP Hajj Experience', location: 'Makkah & Madinah', duration: '8 Days / 7 Nights', rating: 5.0, type: 'hajj', faqs:[{q:'Is VIP service included?',a:'Yes, VIP service included.'}], inclusions:['Luxury Hotels','Private Transport','Visa Assistance','24/7 Support'] },
-    { image: madinahImage, title: 'Umrah Ramadan Special', location: 'Makkah & Madinah', duration: '14 Days / 13 Nights', rating: 4.8, type: 'umrah', faqs:[{q:'Do you provide guidance?',a:'Yes, guided Umrah tours included.'}], inclusions:['Hotels','Transportation','Visa Assistance'] },
-    { image: heroImage, title: 'Family Umrah Package', location: 'Makkah & Madinah', duration: '9 Days / 8 Nights', rating: 4.8, type: 'umrah', faqs:[{q:'Suitable for children?',a:'Yes, family friendly.'}], inclusions:['Hotels','Transportation','Visa Assistance'] },
-    { image: luxuryHotel, title: 'Premium Umrah Experience', location: 'Makkah & Madinah', duration: '12 Days / 11 Nights', rating: 4.9, type: 'umrah', faqs:[{q:'Luxury accommodation?',a:'Yes, premium hotels.'}], inclusions:['Luxury Hotels','Transportation','Visa Assistance'] },
-    { image: uhud, title: 'Complete Ziyarat Tour', location: 'Holy Sites', duration: '2 Days / 1 Nights', rating: 4.9, type: 'ziyarat', faqs:[{q:'Guided tour?',a:'Yes, guided.'}], inclusions:['Hotels','Transportation','Guide'] },
-    { image: madinahImage, title: 'Madinah Ziyarat Special', location: 'Madinah', duration: '1 Days', rating: 4.8, type: 'ziyarat', faqs:[{q:'Local guide included?',a:'Yes'}], inclusions:['Hotels','Transportation','Guide'] },
-    { image: riyadh, title: 'Discover Saudi Arabia', location: 'Multiple Cities', duration: '10 Days / 9 Nights', rating: 4.7, type: 'local', faqs:[{q:'Do we cover Riyadh?',a:'Yes'}], inclusions:['Hotels','Transportation','Guide'] },
-    { image: alUla, title: 'Al Ula Heritage Experience', location: 'Al Ula', duration: '3 Days / 2 Nights', rating: 4.8, type: 'local', faqs:[{q:'Includes guided tours?',a:'Yes'}], inclusions:['Hotels','Transportation','Guide'] },
-    { image: riyadhimg, title: 'Riyadh City Explorer', location: 'Riyadh', duration: '2 Days / 1 Nights', rating: 4.6, type: 'local', faqs:[{q:'City sightseeing?',a:'Yes'}], inclusions:['Hotels','Transportation','Guide'] },
-    { image: europeTour, title: 'Abha, Saudi Arabia', location: 'Abha', duration: '4 Days / 3 Nights', rating: 4.6, type: 'local', faqs:[{q:'International trips?',a:'No'}], inclusions:['Hotels','Transportation','Guide'] },
-    { image: bali, title: 'Bali Beach Paradise', location: 'Bali, Indonesia', duration: '7 Days / 6 Nights', rating: 4.9, type: 'holidays', faqs:[{q:'Are flights included?',a:'Yes, return flights included.'}], inclusions:['Beach Resort','Breakfast','Guided Tours','Airport Transfer'] },
-  { image: thailand, title: 'Thailand Explorer', location: 'Bangkok & Phuket', duration: '8 Days / 7 Nights', rating: 4.8, type: 'holidays', faqs:[{q:'Visa required?',a:'Yes, assistance provided.'}], inclusions:['Hotels','Transportation','City Tours','Island Hopping'] },
-  { image: swi, title: 'Switzerland Scenic Tour', location: 'Zurich, Lucerne, Interlaken', duration: '10 Days / 9 Nights', rating: 5.0, type: 'holidays', faqs:[{q:'Does it include train rides?',a:'Yes, scenic train rides included.'}], inclusions:['Hotels','Transportation','Guided Tours','Mountain Excursions'] },
-  { image: cap, title: 'Cape Town Adventure', location: 'Cape Town, South Africa', duration: '9 Days / 8 Nights', rating: 4.9, type: 'holidays', faqs:[{q:'Are safaris included?',a:'Yes, safari tour included.'}], inclusions:['Hotels','Transportation','Safari','Guided City Tours'] },
-  { image: par, title: 'Paris Romantic Escape', location: 'Paris, France', duration: '6 Days / 5 Nights', rating: 4.9, type: 'holidays', faqs:[{q:'Includes Eiffel Tower visit?',a:'Yes'}], inclusions:['Hotels','Breakfast','City Tours','Seine River Cruise'] },
-  { image: mal, title: 'Maldives Luxury Retreat', location: 'Maldives', duration: '7 Days / 6 Nights', rating: 5.0, type: 'holidays', faqs:[{q:'Private villas included?',a:'Yes'}], inclusions:['Overwater Villas','Breakfast','Snorkeling','Airport Transfer'] },
-  { image: dub, title: 'Dubai Desert Adventure', location: 'Dubai, UAE', duration: '5 Days / 4 Nights', rating: 4.8, type: 'holidays', faqs:[{q:'Includes desert safari?',a:'Yes'}], inclusions:['Hotels','Breakfast','Desert Safari','City Tours'] },
-  { image: jap, title: 'Japan Cherry Blossom Tour', location: 'Tokyo & Kyoto, Japan', duration: '8 Days / 7 Nights', rating: 4.9, type: 'holidays', faqs:[{q:'Are flights included?',a:'Yes'}], inclusions:['Hotels','Breakfast','Guided Tours','Cultural Experiences'] },
-  { image: egy, title: 'Egypt Historical Expedition', location: 'Cairo & Luxor, Egypt', duration: '9 Days / 8 Nights', rating: 4.8, type: 'holidays', faqs:[{q:'Includes Pyramids tour?',a:'Yes'}], inclusions:['Hotels','Breakfast','Guided Tours','Transfers'] },
+  // Package data with translation keys
+  const packageData = [
+    { image: heroImage, titleKey: 'premiumHajj2026', locationKey: 'makkahMadinah', durationKey: '6d5n', rating: 4.9, type: 'hajj', faqKey: 'transportationIncluded', inclusionKeys: ['premiumHotels', 'transportation', 'visaAssistance', 'support24_7'] },
+    { image: madinahImage, titleKey: 'economyHajj', locationKey: 'makkahMadinah', durationKey: '4d3n', rating: 4.7, type: 'hajj', faqKey: 'flightsIncluded', inclusionKeys: ['standardHotels', 'transportation', 'visaAssistance', 'support'] },
+    { image: luxuryHotel, titleKey: 'vipHajj', locationKey: 'makkahMadinah', durationKey: '8d7n', rating: 5.0, type: 'hajj', faqKey: 'vipServiceIncluded', inclusionKeys: ['luxuryHotels', 'privateTransport', 'visaAssistance', 'support24_7'] },
+    { image: madinahImage, titleKey: 'umrahRamadan', locationKey: 'makkahMadinah', durationKey: '14d13n', rating: 4.8, type: 'umrah', faqKey: 'provideGuidance', inclusionKeys: ['hotels', 'transportation', 'visaAssistance'] },
+    { image: heroImage, titleKey: 'familyUmrah', locationKey: 'makkahMadinah', durationKey: '9d8n', rating: 4.8, type: 'umrah', faqKey: 'suitableForChildren', inclusionKeys: ['hotels', 'transportation', 'visaAssistance'] },
+    { image: luxuryHotel, titleKey: 'premiumUmrah', locationKey: 'makkahMadinah', durationKey: '12d11n', rating: 4.9, type: 'umrah', faqKey: 'luxuryAccommodation', inclusionKeys: ['luxuryHotels', 'transportation', 'visaAssistance'] },
+    { image: uhud, titleKey: 'completeZiyarat', locationKey: 'holySites', durationKey: '2d1n', rating: 4.9, type: 'ziyarat', faqKey: 'guidedTour', inclusionKeys: ['hotels', 'transportation', 'guide'] },
+    { image: madinahImage, titleKey: 'madinahZiyarat', locationKey: 'madinah', durationKey: '1d', rating: 4.8, type: 'ziyarat', faqKey: 'localGuideIncluded', inclusionKeys: ['hotels', 'transportation', 'guide'] },
+    { image: riyadh, titleKey: 'discoverSaudi', locationKey: 'multipleCities', durationKey: '10d9n', rating: 4.7, type: 'local', faqKey: 'coverRiyadh', inclusionKeys: ['hotels', 'transportation', 'guide'] },
+    { image: alUla, titleKey: 'alUlaHeritage', locationKey: 'alUla', durationKey: '3d2n', rating: 4.8, type: 'local', faqKey: 'includesGuidedTours', inclusionKeys: ['hotels', 'transportation', 'guide'] },
+    { image: riyadhimg, titleKey: 'riyadhExplorer', locationKey: 'riyadh', durationKey: '2d1n', rating: 4.6, type: 'local', faqKey: 'citySightseeing', inclusionKeys: ['hotels', 'transportation', 'guide'] },
+    { image: europeTour, titleKey: 'abhaSaudi', locationKey: 'abha', durationKey: '4d3n', rating: 4.6, type: 'local', faqKey: 'internationalTrips', inclusionKeys: ['hotels', 'transportation', 'guide'] },
+    { image: bali, titleKey: 'baliBeach', locationKey: 'baliIndonesia', durationKey: '7d6n', rating: 4.9, type: 'holidays', faqKey: 'returnFlightsIncluded', inclusionKeys: ['beachResort', 'breakfast', 'guidedTours', 'airportTransfer'] },
+    { image: thailand, titleKey: 'thailandExplorer', locationKey: 'bangkokPhuket', durationKey: '8d7n', rating: 4.8, type: 'holidays', faqKey: 'visaRequired', inclusionKeys: ['hotels', 'transportation', 'cityTours', 'islandHopping'] },
+    { image: swi, titleKey: 'switzerlandScenic', locationKey: 'zurichLucerne', durationKey: '10d9n', rating: 5.0, type: 'holidays', faqKey: 'trainRidesIncluded', inclusionKeys: ['hotels', 'transportation', 'guidedTours', 'mountainExcursions'] },
+    { image: cap, titleKey: 'capeTownAdventure', locationKey: 'capeTown', durationKey: '9d8n', rating: 4.9, type: 'holidays', faqKey: 'safarisIncluded', inclusionKeys: ['hotels', 'transportation', 'safari', 'cityTours'] },
+    { image: par, titleKey: 'parisRomantic', locationKey: 'parisFrance', durationKey: '6d5n', rating: 4.9, type: 'holidays', faqKey: 'eiffelTowerVisit', inclusionKeys: ['hotels', 'breakfast', 'cityTours', 'seineRiverCruise'] },
+    { image: mal, titleKey: 'maldivesLuxury', locationKey: 'maldives', durationKey: '7d6n', rating: 5.0, type: 'holidays', faqKey: 'privateVillasIncluded', inclusionKeys: ['overwaterVillas', 'breakfast', 'snorkeling', 'airportTransfer'] },
+    { image: dub, titleKey: 'dubaiDesert', locationKey: 'dubaiUAE', durationKey: '5d4n', rating: 4.8, type: 'holidays', faqKey: 'desertSafariIncluded', inclusionKeys: ['hotels', 'breakfast', 'desertSafari', 'cityTours'] },
+    { image: jap, titleKey: 'japanCherry', locationKey: 'tokyoKyoto', durationKey: '8d7n', rating: 4.9, type: 'holidays', faqKey: 'returnFlightsIncluded', inclusionKeys: ['hotels', 'breakfast', 'guidedTours', 'culturalExperiences'] },
+    { image: egy, titleKey: 'egyptHistorical', locationKey: 'cairoLuxor', durationKey: '9d8n', rating: 4.8, type: 'holidays', faqKey: 'pyramidsTour', inclusionKeys: ['hotels', 'breakfast', 'guidedTours', 'transfers'] },
   ];
+
+  // Translate package data based on current language
+  const allPackages = packageData.map(pkg => ({
+    image: pkg.image,
+    title: t.packagesPage.packageTitles[pkg.titleKey as keyof typeof t.packagesPage.packageTitles],
+    location: t.packagesPage.packageLocations[pkg.locationKey as keyof typeof t.packagesPage.packageLocations],
+    duration: t.packagesPage.packageDurations[pkg.durationKey as keyof typeof t.packagesPage.packageDurations],
+    rating: pkg.rating,
+    type: pkg.type,
+    faqs: pkg.faqKey ? [{
+      q: t.packagesPage.packageFAQs[pkg.faqKey as keyof typeof t.packagesPage.packageFAQs].q,
+      a: t.packagesPage.packageFAQs[pkg.faqKey as keyof typeof t.packagesPage.packageFAQs].a
+    }] : [],
+    inclusions: pkg.inclusionKeys.map(key => 
+      t.packagesPage.packageInclusions[key as keyof typeof t.packagesPage.packageInclusions]
+    )
+  }));
 
   const filteredPackages = allPackages.filter(pkg => {
     const matchesFilter = activeFilter === 'all' || pkg.type === activeFilter;
@@ -168,7 +186,7 @@ const Packages = () => {
           onClick={() => setSelectedPackage(null)}
           className="absolute top-4 right-4 bg-white/90 rounded-full px-4 py-2 text-sm font-medium hover:bg-white transition"
         >
-          Close
+          {t.packagesPage.close}
         </button>
       </div>
 
@@ -183,18 +201,18 @@ const Packages = () => {
             <span className="flex items-center gap-1"><Star className="w-4 h-4 text-gold fill-gold" /> {selectedPackage.rating}</span>
           </div>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Experience a thoughtfully curated journey designed for comfort, spiritual fulfillment, and peace of mind.
+            {t.packagesPage.packageDescription}
           </p>
 
           {/* FAQs */}
           {selectedPackage.faqs && (
             <div className="mt-4 sm:mt-6">
-              <h3 className="font-semibold text-lg mb-2">FAQs</h3>
+              <h3 className="font-semibold text-lg mb-2">{t.packagesPage.faqs}</h3>
               <ul className="space-y-2 text-sm sm:text-base">
                 {selectedPackage.faqs.map((faq, i) => (
                   <li key={i}>
-                    <strong>Q:</strong> {faq.q} <br />
-                    <strong>A:</strong> {faq.a}
+                    <strong>{t.packagesPage.questionLabel}</strong> {faq.q} <br />
+                    <strong>{t.packagesPage.answerLabel}</strong> {faq.a}
                   </li>
                 ))}
               </ul>

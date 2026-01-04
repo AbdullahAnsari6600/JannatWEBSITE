@@ -215,6 +215,7 @@
 
 import { motion } from 'framer-motion';
 import { Star, MapPin, Clock } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface PackageCardProps {
   image: string;
@@ -237,6 +238,8 @@ export const PackageCard = ({
   type,
   onViewDetails,
 }: PackageCardProps) => {
+  const { t } = useLanguage();
+  
   const typeColors = {
     hajj: 'bg-primary',
     umrah: 'bg-secondary',
@@ -246,10 +249,10 @@ export const PackageCard = ({
   };
 
   const typeLabels = {
-    hajj: 'Hajj',
-    umrah: 'Umrah',
-    ziyarat: 'Ziyarat',
-    local: 'Local Tour',
+    hajj: t.packageTypes.hajj,
+    umrah: t.packageTypes.umrah,
+    ziyarat: t.packageTypes.ziyarat,
+    local: t.packageTypes.local,
   };
 
   return (
@@ -305,7 +308,7 @@ export const PackageCard = ({
         {price && (
           <div className="pt-3 border-t border-border flex items-center justify-between mt-4">
             <div>
-              <p className="text-xs text-muted-foreground">Starting from</p>
+              <p className="text-xs text-muted-foreground">{t.common.startingFrom}</p>
               <p className="text-xl font-bold text-primary">{price}</p>
             </div>
           </div>
@@ -316,7 +319,7 @@ export const PackageCard = ({
           onClick={onViewDetails}
           className="mt-3 w-full py-2 bg-primary text-white rounded-xl hover:bg-secondary transition"
         >
-          View Details
+          {t.common.viewDetails}
         </button>
       </div>
     </motion.div>
